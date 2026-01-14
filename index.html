@@ -21,8 +21,10 @@
 
       --radius:22px;
       --shadow: 0 20px 60px rgba(0,0,0,.35);
-
       --max: 1140px;
+
+      --preview-h: 560px; /* desktop preview height */
+      --preview-h-mobile: 480px; /* mobile preview height */
     }
 
     *{ box-sizing:border-box; }
@@ -48,20 +50,14 @@
       gap:14px;
       padding: 12px 0 26px;
     }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:10px;
-    }
+    .brand{ display:flex; align-items:center; gap:10px; }
     .mark{
       width:12px; height:12px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
       box-shadow: 0 0 0 6px rgba(111,140,255,.10);
     }
     .brand b{ letter-spacing:.2px; }
-    .navlinks{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
+    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .chip{
       text-decoration:none;
       padding:8px 12px;
@@ -114,9 +110,7 @@
       font-size: 16.5px;
       max-width: 65ch;
     }
-    .hero-cta{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
-    }
+    .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
     .btn{
       text-decoration:none;
       padding: 11px 16px;
@@ -158,22 +152,12 @@
 
     /* Section rhythm */
     .section{ margin-top: 44px; }
-    .section h2{
-      margin:0;
-      font-size: 18px;
-      letter-spacing: -.2px;
-    }
+    .section h2{ margin:0; font-size: 18px; letter-spacing: -.2px; }
     .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,.10);
-      margin: 18px 0 0;
-    }
+    .divider{ height:1px; background: rgba(255,255,255,.10); margin: 18px 0 0; }
 
     /* Process */
-    .steps{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;
-    }
+    .steps{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
     .step{
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.02);
@@ -204,13 +188,8 @@
     @media(min-width: 980px){
       .project-head{ flex-direction:row; align-items:flex-start; justify-content:space-between; }
     }
-    .project-title{
-      margin:0;
-      font-size: 18px;
-    }
-    .tags{
-      display:flex; gap:8px; flex-wrap:wrap; margin-top: 6px;
-    }
+    .project-title{ margin:0; font-size: 18px; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 6px; }
     .tag{
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.02);
@@ -235,40 +214,50 @@
       padding: 16px 18px 18px;
     }
     @media(min-width: 980px){
-      .project-body{ grid-template-columns: 1.25fr .75fr; align-items:start; }
+      .project-body{ grid-template-columns: 1.3fr .7fr; align-items:start; }
     }
 
-    /* BIG previews (the key change) */
+    /* Scrollable preview window (the key) */
     .preview{
       border:1px solid rgba(255,255,255,.12);
       background: #080f1f;
       border-radius: 18px;
       overflow:hidden;
     }
+
+    /* Sticky top bar stays visible while you scroll inside */
     .preview-bar{
+      position: sticky;
+      top: 0;
+      z-index: 2;
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:10px;
       padding: 10px 12px;
       border-bottom: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
+      background: rgba(10, 16, 32, .92);
+      backdrop-filter: blur(10px);
     }
     .lights{ display:flex; gap:7px; }
     .light{
       width:10px; height:10px; border-radius:999px;
       background: rgba(255,255,255,.18);
     }
-    .preview-bar small{ color: var(--muted); font-weight: 650; }
+    .preview-bar small{ color: var(--muted); font-weight: 750; letter-spacing:.2px; }
 
     .preview-viewport{
-      height: 520px;              /* BIGGER so people can actually see it */
-      overflow:auto;              /* scroll within the preview */
-      overscroll-behavior: contain;
+      height: var(--preview-h);
+      overflow:auto;                 /* scroll inside */
+      overscroll-behavior: contain;  /* prevents page from “stealing” scroll */
+      -webkit-overflow-scrolling: touch;
+      scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.05);
+      scrollbar-width: thin;
     }
-    @media(max-width: 520px){
-      .preview-viewport{ height: 460px; }
+    @media(max-width: 700px){
+      .preview-viewport{ height: var(--preview-h-mobile); }
     }
+
     .preview-viewport img{
       width:100%;
       height:auto;
@@ -297,11 +286,11 @@
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.02);
       color: var(--text);
-      font-weight: 700;
+      font-weight: 750;
       font-size: 13px;
       text-decoration:none;
     }
-    .link span{ color: var(--muted); font-weight: 650; }
+    .link span{ color: var(--muted); font-weight: 700; }
     .link:hover{ border-color: rgba(255,255,255,.18); }
 
     /* Gallery */
@@ -320,11 +309,12 @@
       overflow:hidden;
       background:#080f1f;
     }
-    .thumb .mini{
-      height: 220px;
-      overflow:auto;
+    .mini{
+      height: 230px;
+      overflow:auto;                 /* scroll inside thumbnail too */
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
-    .thumb img{ width:100%; display:block; }
 
     /* Contact */
     .contact{
@@ -340,6 +330,7 @@
       padding-left: 18px;
       color: var(--muted);
     }
+
     footer{
       margin-top: 54px;
       text-align:center;
@@ -347,7 +338,6 @@
       font-size: 13px;
     }
 
-    /* Floating top button */
     .top{
       position: fixed;
       right: 16px;
@@ -357,7 +347,7 @@
       border:1px solid var(--stroke);
       background: rgba(8, 15, 31, .75);
       backdrop-filter: blur(10px);
-      font-weight: 750;
+      font-weight: 800;
       font-size: 13px;
       text-decoration:none;
       box-shadow: var(--shadow);
@@ -366,7 +356,6 @@
 </head>
 
 <body>
-  <a id="top"></a>
   <div class="wrap">
 
     <div class="nav">
@@ -385,260 +374,183 @@
       </div>
     </div>
 
-    <div class="hero">
+    <div class="hero" id="process">
       <div>
         <div class="badge"><span class="dot"></span> Hand-coded websites for service-based businesses</div>
-        <h1>Clean, modern sites that look credible and convert.</h1>
+        <h1>Show up online with a site that feels premium.</h1>
         <p class="lead">
-          I build crisp informational websites (and web app interfaces) that help businesses
-          present services clearly, build trust fast, and guide customers to take action —
-          request a quote, book a service, or contact.
+          I design and build crisp informational websites (and web app interfaces) that help businesses
+          look credible, communicate clearly, and convert visitors into customers.
         </p>
 
         <div class="hero-cta">
           <a class="btn primary" href="#contact">Request a Consultation</a>
           <a class="btn" href="#work">See Projects</a>
         </div>
+
+        <div class="section" style="margin-top:26px;">
+          <h2>My process</h2>
+          <p>Simple, organized, and efficient. Most informational sites move quickly once content is finalized.</p>
+          <div class="steps">
+            <span class="step">1. Discovery</span>
+            <span class="step">2. Sitemap</span>
+            <span class="step">3. Design + Copy</span>
+            <span class="step">4. Build (hand-coded)</span>
+            <span class="step">5. QA + Mobile</span>
+            <span class="step">6. Launch</span>
+          </div>
+        </div>
       </div>
 
       <div class="hero-card">
         <h2 style="margin:0; font-size:16px;">What you can expect</h2>
         <div class="stats">
-          <div class="stat">
-            <b>Fast + clean builds</b>
-            <span>Hand-coded HTML/CSS/JS for performance and control.</span>
-          </div>
-          <div class="stat">
-            <b>Mobile-first layout</b>
-            <span>Looks sharp on phones, tablets, and desktops.</span>
-          </div>
-          <div class="stat">
-            <b>Clear structure</b>
-            <span>Headings, CTAs, and sections that make sense.</span>
-          </div>
-          <div class="stat">
-            <b>Professional polish</b>
-            <span>Typography, spacing, and details that feel premium.</span>
-          </div>
+          <div class="stat"><b>Fast + clean builds</b><span>Hand-coded HTML/CSS/JS for performance and control.</span></div>
+          <div class="stat"><b>Mobile-first layout</b><span>Looks sharp on phones, tablets, and desktops.</span></div>
+          <div class="stat"><b>Clear structure</b><span>Headings, CTAs, and sections that make sense.</span></div>
+          <div class="stat"><b>Professional polish</b><span>Typography, spacing, and details that feel premium.</span></div>
         </div>
       </div>
     </div>
 
-    <div class="section" id="process">
-      <h2>My process</h2>
-      <p>Simple, organized, and efficient. Most informational sites move quickly once content is finalized.</p>
-      <div class="steps">
-        <span class="step">1. Discovery</span>
-        <span class="step">2. Sitemap</span>
-        <span class="step">3. Design + Copy</span>
-        <span class="step">4. Build (hand-coded)</span>
-        <span class="step">5. QA + Mobile</span>
-        <span class="step">6. Launch</span>
-      </div>
-      <div class="divider"></div>
-    </div>
-
     <div class="section" id="work">
       <h2>Featured work</h2>
-      <p>Scroll inside each preview to see the full page without squinting.</p>
+      <p>Each project preview is scrollable inside the page — scroll within the preview to see the full design.</p>
+      <div class="divider"></div>
 
       <div class="projects">
 
-        <!-- Replay -->
         <article class="project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Replay Admin Portal (Web App)</h3>
               <p class="project-desc">Clean admin UI for managing conference replays, usage reporting, and user access.</p>
               <div class="tags">
-                <span class="tag">Admin UI</span>
-                <span class="tag">Clarity-first</span>
-                <span class="tag">Hand-coded</span>
+                <span class="tag">Admin UI</span><span class="tag">Clarity-first</span><span class="tag">Hand-coded</span>
+              </div>
+              <div class="project-links">
+                <a class="link" href="images/replay-dev-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
+                <a class="link" href="images/replay-dev-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
               </div>
             </div>
-            <div class="project-links">
-              <a class="link" href="images/replay-dev-1.png" target="_blank" rel="noreferrer">
-                View full image <span>↗</span>
-              </a>
-              <a class="link" href="images/replay-dev-2.png" target="_blank" rel="noreferrer">
-                Alt screen <span>↗</span>
-              </a>
-            </div>
           </div>
-
           <div class="project-body">
             <div class="preview">
               <div class="preview-bar">
-                <div class="lights">
-                  <span class="light"></span><span class="light"></span><span class="light"></span>
-                </div>
-                <small>Scroll preview</small>
+                <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
+                <small>Scroll inside preview</small>
               </div>
               <div class="preview-viewport">
                 <img src="images/replay-dev-1.png" alt="Replay Admin Portal screenshot">
               </div>
             </div>
-
             <div>
               <ul class="bullets">
                 <li>Custom dashboard layout + clean page structure</li>
                 <li>Role-based navigation patterns</li>
                 <li>Designed for speed, readability, and usability</li>
               </ul>
-              <div class="divider"></div>
-              <ul class="bullets">
-                <li><b>Best for:</b> internal tools, admin portals, reporting dashboards</li>
-                <li><b>Focus:</b> clarity, hierarchy, and simple workflows</li>
-              </ul>
             </div>
           </div>
         </article>
 
-        <!-- Syntra -->
         <article class="project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Syntra Digital</h3>
               <p class="project-desc">Brand-forward service site built to clearly present offerings and build trust.</p>
               <div class="tags">
-                <span class="tag">Brand site</span>
-                <span class="tag">Modern layout</span>
-                <span class="tag">CTA-driven</span>
+                <span class="tag">Brand site</span><span class="tag">Modern layout</span><span class="tag">CTA-driven</span>
+              </div>
+              <div class="project-links">
+                <a class="link" href="images/syntra-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
+                <a class="link" href="images/syntra-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
               </div>
             </div>
-            <div class="project-links">
-              <a class="link" href="images/syntra-1.png" target="_blank" rel="noreferrer">
-                View full image <span>↗</span>
-              </a>
-              <a class="link" href="images/syntra-2.png" target="_blank" rel="noreferrer">
-                Alt screen <span>↗</span>
-              </a>
-            </div>
           </div>
-
           <div class="project-body">
             <div class="preview">
               <div class="preview-bar">
-                <div class="lights">
-                  <span class="light"></span><span class="light"></span><span class="light"></span>
-                </div>
-                <small>Scroll preview</small>
+                <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
+                <small>Scroll inside preview</small>
               </div>
               <div class="preview-viewport">
                 <img src="images/syntra-1.png" alt="Syntra Digital website screenshot">
               </div>
             </div>
-
             <div>
               <ul class="bullets">
                 <li>Clean typography + crisp section spacing</li>
                 <li>Service structure built for fast scanning</li>
                 <li>Strong calls-to-action and trust signals</li>
               </ul>
-              <div class="divider"></div>
-              <ul class="bullets">
-                <li><b>Best for:</b> service providers, consultants, agencies</li>
-                <li><b>Focus:</b> brand clarity + lead generation</li>
-              </ul>
             </div>
           </div>
         </article>
 
-        <!-- Saxon -->
         <article class="project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Saxon Performance Automotive</h3>
               <p class="project-desc">Business website focused on services, credibility, and an easy contact flow.</p>
               <div class="tags">
-                <span class="tag">Business site</span>
-                <span class="tag">Trust signals</span>
-                <span class="tag">Mobile-first</span>
+                <span class="tag">Business site</span><span class="tag">Trust signals</span><span class="tag">Mobile-first</span>
+              </div>
+              <div class="project-links">
+                <a class="link" href="images/saxon-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
+                <a class="link" href="images/saxon-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
               </div>
             </div>
-            <div class="project-links">
-              <a class="link" href="images/saxon-1.png" target="_blank" rel="noreferrer">
-                View full image <span>↗</span>
-              </a>
-              <a class="link" href="images/saxon-2.png" target="_blank" rel="noreferrer">
-                Alt screen <span>↗</span>
-              </a>
-            </div>
           </div>
-
           <div class="project-body">
             <div class="preview">
               <div class="preview-bar">
-                <div class="lights">
-                  <span class="light"></span><span class="light"></span><span class="light"></span>
-                </div>
-                <small>Scroll preview</small>
+                <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
+                <small>Scroll inside preview</small>
               </div>
               <div class="preview-viewport">
                 <img src="images/saxon-1.png" alt="Saxon Performance Automotive website screenshot">
               </div>
             </div>
-
             <div>
               <ul class="bullets">
                 <li>Service-forward page flow + simple navigation</li>
                 <li>Clear CTAs (call/text/contact) placed intentionally</li>
                 <li>Designed to feel credible and professional</li>
               </ul>
-              <div class="divider"></div>
-              <ul class="bullets">
-                <li><b>Best for:</b> local services, trades, automotive, home services</li>
-                <li><b>Focus:</b> clear services + quick contact</li>
-              </ul>
             </div>
           </div>
         </article>
 
-        <!-- Veloce -->
         <article class="project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Veloce Logistics</h3>
               <p class="project-desc">Informational logistics website with coverage, services, and contact pages.</p>
               <div class="tags">
-                <span class="tag">Logistics</span>
-                <span class="tag">Informational site</span>
-                <span class="tag">Credibility</span>
+                <span class="tag">Logistics</span><span class="tag">Informational</span><span class="tag">Credibility</span>
+              </div>
+              <div class="project-links">
+                <a class="link" href="images/veloce-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
+                <a class="link" href="images/veloce-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
               </div>
             </div>
-            <div class="project-links">
-              <a class="link" href="images/veloce-1.png" target="_blank" rel="noreferrer">
-                View full image <span>↗</span>
-              </a>
-              <a class="link" href="images/veloce-2.png" target="_blank" rel="noreferrer">
-                Alt screen <span>↗</span>
-              </a>
-            </div>
           </div>
-
           <div class="project-body">
             <div class="preview">
               <div class="preview-bar">
-                <div class="lights">
-                  <span class="light"></span><span class="light"></span><span class="light"></span>
-                </div>
-                <small>Scroll preview</small>
+                <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
+                <small>Scroll inside preview</small>
               </div>
               <div class="preview-viewport">
                 <img src="images/veloce-1.png" alt="Veloce Logistics website screenshot">
               </div>
             </div>
-
             <div>
               <ul class="bullets">
                 <li>Clear layout for services + coverage areas</li>
                 <li>Designed to feel trustworthy and established</li>
                 <li>Contact-forward structure</li>
-              </ul>
-              <div class="divider"></div>
-              <ul class="bullets">
-                <li><b>Best for:</b> moving companies, freight/logistics, transport</li>
-                <li><b>Focus:</b> credibility + quote requests</li>
               </ul>
             </div>
           </div>
@@ -649,7 +561,8 @@
 
     <div class="section">
       <h2>More screenshots</h2>
-      <p>Quick additional previews (scroll inside each thumbnail).</p>
+      <p>These thumbnails are also scrollable inside each frame.</p>
+      <div class="divider"></div>
 
       <div class="gallery">
         <div class="thumb"><div class="mini"><img src="images/replay-dev-4.png" alt=""></div></div>
@@ -663,7 +576,6 @@
     <div class="section" id="contact">
       <h2>Contact</h2>
       <p>Want to chat about a website build or redesign? Reach out below.</p>
-
       <div class="contact">
         <ul>
           <li>Fiverr: <b>@leesamoore419</b></li>
@@ -673,6 +585,7 @@
     </div>
 
     <footer>© <span id="y"></span> Leesa Moore</footer>
+
   </div>
 
   <a class="top" href="#top">↑ Top</a>
