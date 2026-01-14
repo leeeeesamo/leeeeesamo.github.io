@@ -3,15 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leesa Moore | Web Design & Development</title>
-  <meta name="description" content="Leesa Moore — hand-coded websites with clean design, strong UX, and fast performance." />
+  <title>Leesa Moore | Reliable by Design</title>
+  <meta name="description" content="Leesa Moore — Reliable by Design. Hand-coded websites with clean design, strong UX, and fast performance." />
 
   <style>
     :root{
       --bg0:#050912;
       --bg1:#070f22;
+
       --panel: rgba(255,255,255,.035);
-      --stroke: rgba(255,255,255,.09);
+      --stroke: rgba(255,255,255,.10);
+
       --text:#eef2ff;
       --muted:#a9b6d3;
 
@@ -20,44 +22,61 @@
       --hot:#7c5cff;
 
       --radius:22px;
-      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --shadow: 0 22px 70px rgba(0,0,0,.40);
+
       --max: 1140px;
 
-      --preview-h: 560px; /* desktop preview height */
-      --preview-h-mobile: 480px; /* mobile preview height */
+      --preview-h: 580px;
+      --preview-h-mobile: 480px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
+
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 18% -10%, rgba(111,140,255,.30), transparent 60%),
-        radial-gradient(800px 450px at 88% 10%, rgba(124,92,255,.22), transparent 60%),
-        radial-gradient(700px 420px at 50% 120%, rgba(138,166,255,.14), transparent 60%),
+        radial-gradient(900px 520px at 18% -10%, rgba(111,140,255,.32), transparent 60%),
+        radial-gradient(820px 460px at 88% 10%, rgba(124,92,255,.24), transparent 60%),
+        radial-gradient(720px 460px at 50% 120%, rgba(138,166,255,.14), transparent 60%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
+
     a{ color:inherit; }
     .wrap{ max-width: var(--max); margin:auto; padding: 34px 20px 90px; }
 
-    /* Top nav */
+    /* NAV */
     .nav{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding: 12px 0 26px;
+      padding: 12px 0 28px;
     }
-    .brand{ display:flex; align-items:center; gap:10px; }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
     .mark{
-      width:12px; height:12px; border-radius:999px;
+      width:14px; height:14px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
-      box-shadow: 0 0 0 6px rgba(111,140,255,.10);
+      box-shadow:
+        0 0 0 6px rgba(111,140,255,.10),
+        0 0 30px rgba(111,140,255,.20);
     }
     .brand b{ letter-spacing:.2px; }
-    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
+    .brand .sub{
+      display:block;
+      margin-top:2px;
+      color:var(--muted);
+      font-size:12.5px;
+    }
+    .navlinks{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
     .chip{
       text-decoration:none;
       padding:8px 12px;
@@ -65,22 +84,23 @@
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.025);
       color: var(--muted);
-      font-weight: 650;
+      font-weight: 700;
       font-size: 13px;
-      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      transition: transform .12s ease, border-color .12s ease;
     }
-    .chip:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); }
+    .chip:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
 
-    /* Hero */
+    /* HERO */
     .hero{
-      padding: 18px 0 30px;
       display:grid;
       grid-template-columns: 1fr;
       gap: 18px;
+      padding-bottom: 26px;
     }
     @media(min-width: 980px){
       .hero{ grid-template-columns: 1.15fr .85fr; align-items:start; }
     }
+
     .badge{
       display:inline-flex;
       align-items:center;
@@ -97,27 +117,40 @@
       width:7px; height:7px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
     }
+
     h1{
       margin: 12px 0 10px;
-      font-size: 44px;
-      letter-spacing: -1px;
-      line-height: 1.08;
+      font-size: 46px;
+      letter-spacing: -1.1px;
+      line-height: 1.06;
+    }
+    .tagline{
+      display:inline-block;
+      background: linear-gradient(135deg, rgba(111,140,255,.18), rgba(124,92,255,.18));
+      border:1px solid rgba(255,255,255,.10);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: .2px;
+      margin: 6px 0 14px;
     }
     .lead{
       margin: 0;
       color: var(--muted);
       line-height: 1.75;
       font-size: 16.5px;
-      max-width: 65ch;
+      max-width: 68ch;
     }
-    .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
+    .hero-cta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
+    }
     .btn{
       text-decoration:none;
       padding: 11px 16px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
       background: rgba(255,255,255,.03);
-      font-weight: 750;
+      font-weight: 800;
       font-size: 14px;
       transition: transform .12s ease, border-color .12s ease;
     }
@@ -128,6 +161,47 @@
       color:#081022;
     }
 
+    /* Signature strip (less generic) */
+    .signature{
+      margin-top: 18px;
+      border:1px solid var(--stroke);
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .sig-top{
+      padding: 14px 16px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+    }
+    .sig-top b{ font-size: 14px; }
+    .sig-top span{ color: var(--muted); font-size: 13px; }
+    .sig-grid{
+      display:grid;
+      grid-template-columns:1fr;
+      gap: 0;
+    }
+    @media(min-width: 980px){
+      .sig-grid{ grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .sig-item{
+      padding: 14px 16px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+    @media(min-width: 980px){
+      .sig-item{ border-top: none; border-left: 1px solid rgba(255,255,255,.08); }
+      .sig-item:first-child{ border-left:none; }
+    }
+    .sig-item b{ display:block; font-size: 14px; }
+    .sig-item p{ margin:6px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+
+    /* Right hero card */
     .hero-card{
       border:1px solid var(--stroke);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -142,7 +216,7 @@
       margin-top: 12px;
     }
     .stat{
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.10);
       background: rgba(255,255,255,.02);
       border-radius: 16px;
       padding: 12px;
@@ -150,7 +224,7 @@
     .stat b{ display:block; font-size: 14px; }
     .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
-    /* Section rhythm */
+    /* Sections */
     .section{ margin-top: 44px; }
     .section h2{ margin:0; font-size: 18px; letter-spacing: -.2px; }
     .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
@@ -159,26 +233,25 @@
     /* Process */
     .steps{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
     .step{
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
       color: var(--muted);
       border-radius: 999px;
       padding: 8px 12px;
       font-size: 13px;
-      font-weight: 650;
+      font-weight: 750;
     }
 
     /* Projects */
     .projects{ display:flex; flex-direction:column; gap:18px; margin-top: 18px; }
 
     .project{
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.12);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       overflow:hidden;
     }
-
     .project-head{
       padding: 18px 18px 0;
       display:flex;
@@ -189,16 +262,6 @@
       .project-head{ flex-direction:row; align-items:flex-start; justify-content:space-between; }
     }
     .project-title{ margin:0; font-size: 18px; }
-    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 6px; }
-    .tag{
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.02);
-      color: var(--muted);
-      border-radius: 999px;
-      padding: 6px 10px;
-      font-size: 12.5px;
-      font-weight: 650;
-    }
     .project-desc{
       color: var(--muted);
       line-height: 1.6;
@@ -206,6 +269,36 @@
       max-width: 72ch;
       font-size: 14px;
     }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 8px; }
+    .tag{
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12.5px;
+      font-weight: 750;
+    }
+
+    .project-links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+      text-decoration:none;
+    }
+    .link span{ color: var(--muted); font-weight: 800; }
+    .link:hover{ border-color: rgba(255,255,255,.18); }
 
     .project-body{
       display:grid;
@@ -214,18 +307,16 @@
       padding: 16px 18px 18px;
     }
     @media(min-width: 980px){
-      .project-body{ grid-template-columns: 1.3fr .7fr; align-items:start; }
+      .project-body{ grid-template-columns: 1.35fr .65fr; align-items:start; }
     }
 
-    /* Scrollable preview window (the key) */
+    /* Scrollable preview (nested scroll) */
     .preview{
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.14);
       background: #080f1f;
       border-radius: 18px;
       overflow:hidden;
     }
-
-    /* Sticky top bar stays visible while you scroll inside */
     .preview-bar{
       position: sticky;
       top: 0;
@@ -240,29 +331,21 @@
       backdrop-filter: blur(10px);
     }
     .lights{ display:flex; gap:7px; }
-    .light{
-      width:10px; height:10px; border-radius:999px;
-      background: rgba(255,255,255,.18);
-    }
-    .preview-bar small{ color: var(--muted); font-weight: 750; letter-spacing:.2px; }
+    .light{ width:10px; height:10px; border-radius:999px; background: rgba(255,255,255,.18); }
+    .preview-bar small{ color: var(--muted); font-weight: 900; letter-spacing:.2px; }
 
     .preview-viewport{
       height: var(--preview-h);
-      overflow:auto;                 /* scroll inside */
-      overscroll-behavior: contain;  /* prevents page from “stealing” scroll */
+      overflow:auto;
+      overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
-      scrollbar-color: rgba(255,255,255,.25) rgba(255,255,255,.05);
+      scrollbar-color: rgba(255,255,255,.28) rgba(255,255,255,.06);
       scrollbar-width: thin;
     }
     @media(max-width: 700px){
       .preview-viewport{ height: var(--preview-h-mobile); }
     }
-
-    .preview-viewport img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
+    .preview-viewport img{ width:100%; height:auto; display:block; }
 
     .bullets{
       margin: 0;
@@ -272,26 +355,6 @@
       font-size: 14px;
     }
     .bullets li{ margin: 7px 0; }
-
-    .project-links{
-      display:flex; gap:10px; flex-wrap:wrap;
-      margin-top: 10px;
-    }
-    .link{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.02);
-      color: var(--text);
-      font-weight: 750;
-      font-size: 13px;
-      text-decoration:none;
-    }
-    .link span{ color: var(--muted); font-weight: 700; }
-    .link:hover{ border-color: rgba(255,255,255,.18); }
 
     /* Gallery */
     .gallery{
@@ -304,32 +367,29 @@
       .gallery{ grid-template-columns: repeat(5, 1fr); }
     }
     .thumb{
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.12);
       border-radius: 16px;
       overflow:hidden;
       background:#080f1f;
     }
     .mini{
-      height: 230px;
-      overflow:auto;                 /* scroll inside thumbnail too */
+      height: 240px;
+      overflow:auto;
       overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
     }
+    .mini img{ width:100%; display:block; }
 
     /* Contact */
     .contact{
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.12);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
       border-radius: var(--radius);
       padding: 18px;
       box-shadow: var(--shadow);
       margin-top: 18px;
     }
-    .contact ul{
-      margin: 10px 0 0;
-      padding-left: 18px;
-      color: var(--muted);
-    }
+    .contact ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
 
     footer{
       margin-top: 54px;
@@ -344,10 +404,10 @@
       bottom: 16px;
       padding: 10px 12px;
       border-radius: 999px;
-      border:1px solid var(--stroke);
+      border:1px solid rgba(255,255,255,.12);
       background: rgba(8, 15, 31, .75);
       backdrop-filter: blur(10px);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 13px;
       text-decoration:none;
       box-shadow: var(--shadow);
@@ -356,14 +416,15 @@
 </head>
 
 <body>
+  <a id="top"></a>
   <div class="wrap">
 
     <div class="nav">
       <div class="brand">
         <span class="mark"></span>
         <div>
-          <b>Leesa Moore</b><br>
-          <span style="color:var(--muted); font-size:12.5px;">Web Design & Development</span>
+          <b>Leesa Moore</b>
+          <span class="sub">Reliable by Design</span>
         </div>
       </div>
 
@@ -376,10 +437,11 @@
 
     <div class="hero" id="process">
       <div>
-        <div class="badge"><span class="dot"></span> Hand-coded websites for service-based businesses</div>
-        <h1>Show up online with a site that feels premium.</h1>
+        <div class="badge"><span class="dot"></span> Reliable by Design • Web Design & Development</div>
+        <div class="tagline">Reliable by Design</div>
+        <h1>Websites that feel premium and work hard.</h1>
         <p class="lead">
-          I design and build crisp informational websites (and web app interfaces) that help businesses
+          I design and hand-code crisp informational websites (and web app interfaces) that help businesses
           look credible, communicate clearly, and convert visitors into customers.
         </p>
 
@@ -388,16 +450,24 @@
           <a class="btn" href="#work">See Projects</a>
         </div>
 
-        <div class="section" style="margin-top:26px;">
-          <h2>My process</h2>
-          <p>Simple, organized, and efficient. Most informational sites move quickly once content is finalized.</p>
-          <div class="steps">
-            <span class="step">1. Discovery</span>
-            <span class="step">2. Sitemap</span>
-            <span class="step">3. Design + Copy</span>
-            <span class="step">4. Build (hand-coded)</span>
-            <span class="step">5. QA + Mobile</span>
-            <span class="step">6. Launch</span>
+        <div class="signature">
+          <div class="sig-top">
+            <b>My signature</b>
+            <span>clean structure • clear copy • fast performance</span>
+          </div>
+          <div class="sig-grid">
+            <div class="sig-item">
+              <b>Who I help</b>
+              <p>Service-based businesses — moving/logistics, local services, and small brands.</p>
+            </div>
+            <div class="sig-item">
+              <b>What I build</b>
+              <p>Hand-coded informational websites, landing pages, and clean admin-style interfaces.</p>
+            </div>
+            <div class="sig-item">
+              <b>What you get</b>
+              <p>A modern look that builds trust fast, and a structure that drives action.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -409,6 +479,19 @@
           <div class="stat"><b>Mobile-first layout</b><span>Looks sharp on phones, tablets, and desktops.</span></div>
           <div class="stat"><b>Clear structure</b><span>Headings, CTAs, and sections that make sense.</span></div>
           <div class="stat"><b>Professional polish</b><span>Typography, spacing, and details that feel premium.</span></div>
+        </div>
+
+        <div class="section" style="margin-top:16px;">
+          <h2 style="font-size:16px;">My process</h2>
+          <p style="margin-top:8px;">Simple, organized, efficient.</p>
+          <div class="steps">
+            <span class="step">1. Discovery</span>
+            <span class="step">2. Sitemap</span>
+            <span class="step">3. Design + Copy</span>
+            <span class="step">4. Build</span>
+            <span class="step">5. QA</span>
+            <span class="step">6. Launch</span>
+          </div>
         </div>
       </div>
     </div>
@@ -561,7 +644,7 @@
 
     <div class="section">
       <h2>More screenshots</h2>
-      <p>These thumbnails are also scrollable inside each frame.</p>
+      <p>Additional previews (scroll inside each thumbnail).</p>
       <div class="divider"></div>
 
       <div class="gallery">
@@ -584,8 +667,7 @@
       </div>
     </div>
 
-    <footer>© <span id="y"></span> Leesa Moore</footer>
-
+    <footer>© <span id="y"></span> Leesa Moore • Reliable by Design</footer>
   </div>
 
   <a class="top" href="#top">↑ Top</a>
