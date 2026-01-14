@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Leesa | Web Design Portfolio</title>
+  <style>
+    :root {
+      --bg:#0b1220;
+      --card:#0f1b33;
+      --text:#eaf0ff;
+      --muted:#a9b7d0;
+      --accent:#4f7cff;
+    }
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+    }
+    .wrap { max-width: 1000px; margin: auto; padding: 32px 20px 64px; }
+    header { display:flex; flex-wrap:wrap; gap:20px; justify-content:space-between; align-items:center; }
+    h1 { margin:0; font-size:32px; }
+    p { line-height:1.6; }
+    .muted { color:var(--muted); }
+    .btns a {
+      text-decoration:none;
+      padding:10px 14px;
+      border-radius:12px;
+      margin-right:10px;
+      border:1px solid rgba(255,255,255,.15);
+      color:var(--text);
+    }
+    .primary { background:var(--accent); color:#081022; border:none; font-weight:600; }
+    .grid { display:grid; grid-template-columns: repeat(12,1fr); gap:16px; margin-top:30px; }
+    .card {
+      background:var(--card);
+      border-radius:16px;
+      padding:18px;
+      grid-column: span 12;
+      border:1px solid rgba(255,255,255,.08);
+    }
+    @media(min-width:900px){
+      .half { grid-column: span 6; }
+    }
+    img { max-width:100%; border-radius:12px; }
+    footer { margin-top:40px; color:var(--muted); font-size:14px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div>
+        <h1>Leesa Moore</h1>
+        <p class="muted">Website Designer specializing in clean, informational websites for service-based businesses.</p>
+      </div>
+      <div class="btns">
+        <a class="primary" href="#contact">Request a Consultation</a>
+        <a href="#work">View Work</a>
+      </div>
+    </header>
+
+    <div class="grid">
+      <section class="card half">
+        <h2>What I Do</h2>
+        <p class="muted">
+          I design modern, easy-to-navigate websites that help businesses clearly present their services and build trust with customers.
+        </p>
+        <ul class="muted">
+          <li>Informational & business websites</li>
+          <li>Website redesigns</li>
+          <li>Mobile-friendly layouts</li>
+          <li>Content cleanup & structure</li>
+        </ul>
+      </section>
+
+      <section class="card half" id="work">
+        <h2>Featured Work</h2>
+        <p class="muted">Project examples coming below.</p>
+      </section>
+
+      <section class="card">
+        <h2>Sample Project</h2>
+        <p class="muted">
+          Business informational website with a focus on clear services, branding, and contact flow.
+        </p>
+        <ul class="muted">
+          <li>Custom layout & design</li>
+          <li>Brand cleanup</li>
+          <li>Mobile optimization</li>
+        </ul>
+      </section>
+
+      <section class="card" id="contact">
+        <h2>Contact</h2>
+        <p class="muted">Reach out via Fiverr or email:</p>
+        <ul class="muted">
+          <li>Fiverr: @leesamoore419</li>
+          <li>Email: hello@syntrasolutions.digital</li>
+        </ul>
+      </section>
+    </div>
+
+    <footer>© <span id="year"></span> Leesa Moore</footer>
+  </div>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
