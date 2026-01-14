@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leesa Moore | Reliable by Design</title>
-  <meta name="description" content="Leesa Moore — Reliable by Design. Hand-coded websites with clean design, strong UX, and fast performance." />
+  <meta name="description" content="Reliable by Design — hand-coded websites with clean structure, strong UX, and fast performance." />
 
   <style>
     :root{
@@ -26,13 +26,12 @@
 
       --max: 1140px;
 
-      --preview-h: 580px;
-      --preview-h-mobile: 480px;
+      --preview-h: 600px;
+      --preview-h-mobile: 500px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
-
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
@@ -43,7 +42,6 @@
         radial-gradient(720px 460px at 50% 120%, rgba(138,166,255,.14), transparent 60%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
-
     a{ color:inherit; }
     .wrap{ max-width: var(--max); margin:auto; padding: 34px 20px 90px; }
 
@@ -63,20 +61,11 @@
     .mark{
       width:14px; height:14px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
-      box-shadow:
-        0 0 0 6px rgba(111,140,255,.10),
-        0 0 30px rgba(111,140,255,.20);
+      box-shadow: 0 0 0 6px rgba(111,140,255,.10), 0 0 30px rgba(111,140,255,.20);
     }
     .brand b{ letter-spacing:.2px; }
-    .brand .sub{
-      display:block;
-      margin-top:2px;
-      color:var(--muted);
-      font-size:12.5px;
-    }
-    .navlinks{
-      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
-    }
+    .brand .sub{ display:block; margin-top:2px; color:var(--muted); font-size:12.5px; }
+    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
     .chip{
       text-decoration:none;
       padding:8px 12px;
@@ -100,7 +89,6 @@
     @media(min-width: 980px){
       .hero{ grid-template-columns: 1.15fr .85fr; align-items:start; }
     }
-
     .badge{
       display:inline-flex;
       align-items:center;
@@ -117,22 +105,21 @@
       width:7px; height:7px; border-radius:999px;
       background: linear-gradient(135deg, var(--accent), var(--hot));
     }
-
-    h1{
-      margin: 12px 0 10px;
-      font-size: 46px;
-      letter-spacing: -1.1px;
-      line-height: 1.06;
-    }
     .tagline{
       display:inline-block;
       background: linear-gradient(135deg, rgba(111,140,255,.18), rgba(124,92,255,.18));
       border:1px solid rgba(255,255,255,.10);
       padding: 7px 12px;
       border-radius: 999px;
-      font-weight: 800;
+      font-weight: 900;
       letter-spacing: .2px;
-      margin: 6px 0 14px;
+      margin: 8px 0 12px;
+    }
+    h1{
+      margin: 10px 0 10px;
+      font-size: 46px;
+      letter-spacing: -1.1px;
+      line-height: 1.06;
     }
     .lead{
       margin: 0;
@@ -141,16 +128,14 @@
       font-size: 16.5px;
       max-width: 68ch;
     }
-    .hero-cta{
-      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
-    }
+    .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
     .btn{
       text-decoration:none;
       padding: 11px 16px;
       border-radius: 999px;
       border: 1px solid var(--stroke);
       background: rgba(255,255,255,.03);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 14px;
       transition: transform .12s ease, border-color .12s ease;
     }
@@ -161,47 +146,6 @@
       color:#081022;
     }
 
-    /* Signature strip (less generic) */
-    .signature{
-      margin-top: 18px;
-      border:1px solid var(--stroke);
-      border-radius: var(--radius);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-    }
-    .sig-top{
-      padding: 14px 16px;
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      align-items:center;
-      justify-content:space-between;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-    }
-    .sig-top b{ font-size: 14px; }
-    .sig-top span{ color: var(--muted); font-size: 13px; }
-    .sig-grid{
-      display:grid;
-      grid-template-columns:1fr;
-      gap: 0;
-    }
-    @media(min-width: 980px){
-      .sig-grid{ grid-template-columns: 1fr 1fr 1fr; }
-    }
-    .sig-item{
-      padding: 14px 16px;
-      border-top: 1px solid rgba(255,255,255,.08);
-    }
-    @media(min-width: 980px){
-      .sig-item{ border-top: none; border-left: 1px solid rgba(255,255,255,.08); }
-      .sig-item:first-child{ border-left:none; }
-    }
-    .sig-item b{ display:block; font-size: 14px; }
-    .sig-item p{ margin:6px 0 0; color: var(--muted); font-size: 13.5px; line-height: 1.55; }
-
-    /* Right hero card */
     .hero-card{
       border:1px solid var(--stroke);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -209,29 +153,9 @@
       padding: 16px;
       box-shadow: var(--shadow);
     }
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      margin-top: 12px;
-    }
-    .stat{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.02);
-      border-radius: 16px;
-      padding: 12px;
-    }
-    .stat b{ display:block; font-size: 14px; }
-    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
-    /* Sections */
-    .section{ margin-top: 44px; }
-    .section h2{ margin:0; font-size: 18px; letter-spacing: -.2px; }
-    .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
-    .divider{ height:1px; background: rgba(255,255,255,.10); margin: 18px 0 0; }
-
-    /* Process */
-    .steps{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px; }
+    /* Process (updated) */
+    .steps{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
     .step{
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
@@ -239,8 +163,14 @@
       border-radius: 999px;
       padding: 8px 12px;
       font-size: 13px;
-      font-weight: 750;
+      font-weight: 900;
     }
+
+    /* Sections */
+    .section{ margin-top: 44px; }
+    .section h2{ margin:0; font-size: 18px; letter-spacing: -.2px; }
+    .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
+    .divider{ height:1px; background: rgba(255,255,255,.10); margin: 18px 0 0; }
 
     /* Projects */
     .projects{ display:flex; flex-direction:column; gap:18px; margin-top: 18px; }
@@ -252,6 +182,7 @@
       box-shadow: var(--shadow);
       overflow:hidden;
     }
+
     .project-head{
       padding: 18px 18px 0;
       display:flex;
@@ -269,6 +200,7 @@
       max-width: 72ch;
       font-size: 14px;
     }
+
     .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top: 8px; }
     .tag{
       border:1px solid rgba(255,255,255,.12);
@@ -277,7 +209,7 @@
       border-radius: 999px;
       padding: 6px 10px;
       font-size: 12.5px;
-      font-weight: 750;
+      font-weight: 900;
     }
 
     .project-links{
@@ -293,11 +225,11 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
       color: var(--text);
-      font-weight: 800;
+      font-weight: 900;
       font-size: 13px;
       text-decoration:none;
     }
-    .link span{ color: var(--muted); font-weight: 800; }
+    .link span{ color: var(--muted); font-weight: 900; }
     .link:hover{ border-color: rgba(255,255,255,.18); }
 
     .project-body{
@@ -310,7 +242,7 @@
       .project-body{ grid-template-columns: 1.35fr .65fr; align-items:start; }
     }
 
-    /* Scrollable preview (nested scroll) */
+    /* Nested scroll preview */
     .preview{
       border:1px solid rgba(255,255,255,.14);
       background: #080f1f;
@@ -332,7 +264,7 @@
     }
     .lights{ display:flex; gap:7px; }
     .light{ width:10px; height:10px; border-radius:999px; background: rgba(255,255,255,.18); }
-    .preview-bar small{ color: var(--muted); font-weight: 900; letter-spacing:.2px; }
+    .preview-bar small{ color: var(--muted); font-weight: 950; letter-spacing:.2px; }
 
     .preview-viewport{
       height: var(--preview-h);
@@ -407,7 +339,7 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(8, 15, 31, .75);
       backdrop-filter: blur(10px);
-      font-weight: 900;
+      font-weight: 950;
       font-size: 13px;
       text-decoration:none;
       box-shadow: var(--shadow);
@@ -450,60 +382,42 @@
           <a class="btn" href="#work">See Projects</a>
         </div>
 
-        <div class="signature">
-          <div class="sig-top">
-            <b>My signature</b>
-            <span>clean structure • clear copy • fast performance</span>
-          </div>
-          <div class="sig-grid">
-            <div class="sig-item">
-              <b>Who I help</b>
-              <p>Service-based businesses — moving/logistics, local services, and small brands.</p>
-            </div>
-            <div class="sig-item">
-              <b>What I build</b>
-              <p>Hand-coded informational websites, landing pages, and clean admin-style interfaces.</p>
-            </div>
-            <div class="sig-item">
-              <b>What you get</b>
-              <p>A modern look that builds trust fast, and a structure that drives action.</p>
-            </div>
+        <div class="section" style="margin-top:26px;">
+          <h2>Process</h2>
+          <p>Simple and reliable from start to finish.</p>
+          <div class="steps">
+            <span class="step">Plan</span>
+            <span class="step">Design</span>
+            <span class="step">Build</span>
+            <span class="step">Launch</span>
           </div>
         </div>
       </div>
 
       <div class="hero-card">
         <h2 style="margin:0; font-size:16px;">What you can expect</h2>
-        <div class="stats">
-          <div class="stat"><b>Fast + clean builds</b><span>Hand-coded HTML/CSS/JS for performance and control.</span></div>
-          <div class="stat"><b>Mobile-first layout</b><span>Looks sharp on phones, tablets, and desktops.</span></div>
-          <div class="stat"><b>Clear structure</b><span>Headings, CTAs, and sections that make sense.</span></div>
-          <div class="stat"><b>Professional polish</b><span>Typography, spacing, and details that feel premium.</span></div>
+        <div class="steps" style="margin-top:12px;">
+          <span class="step">Clean structure</span>
+          <span class="step">Fast performance</span>
+          <span class="step">Mobile-first</span>
+          <span class="step">CTA clarity</span>
         </div>
-
-        <div class="section" style="margin-top:16px;">
-          <h2 style="font-size:16px;">My process</h2>
-          <p style="margin-top:8px;">Simple, organized, efficient.</p>
-          <div class="steps">
-            <span class="step">1. Discovery</span>
-            <span class="step">2. Sitemap</span>
-            <span class="step">3. Design + Copy</span>
-            <span class="step">4. Build</span>
-            <span class="step">5. QA</span>
-            <span class="step">6. Launch</span>
-          </div>
-        </div>
+        <div class="divider"></div>
+        <p class="lead" style="font-size:14.5px;">
+          I focus on typography, spacing, and user flow so your site looks credible and guides visitors to take action.
+        </p>
       </div>
     </div>
 
     <div class="section" id="work">
       <h2>Featured work</h2>
-      <p>Each project preview is scrollable inside the page — scroll within the preview to see the full design.</p>
+      <p>Scroll normally down the page. When you reach a project, your scrolling will move inside that project preview.</p>
       <div class="divider"></div>
 
       <div class="projects">
 
-        <article class="project">
+        <!-- Replay -->
+        <article class="project js-project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Replay Admin Portal (Web App)</h3>
@@ -512,8 +426,10 @@
                 <span class="tag">Admin UI</span><span class="tag">Clarity-first</span><span class="tag">Hand-coded</span>
               </div>
               <div class="project-links">
-                <a class="link" href="images/replay-dev-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
-                <a class="link" href="images/replay-dev-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
+                <!-- Opens a reader-friendly viewer page (below) -->
+                <a class="link" href="viewer.html?img=images/replay-dev-1.png&title=Replay%20Admin%20Portal" target="_blank" rel="noreferrer">
+                  View full page <span>↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -521,9 +437,9 @@
             <div class="preview">
               <div class="preview-bar">
                 <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
-                <small>Scroll inside preview</small>
+                <small>Scroll preview</small>
               </div>
-              <div class="preview-viewport">
+              <div class="preview-viewport js-preview">
                 <img src="images/replay-dev-1.png" alt="Replay Admin Portal screenshot">
               </div>
             </div>
@@ -537,7 +453,8 @@
           </div>
         </article>
 
-        <article class="project">
+        <!-- Syntra -->
+        <article class="project js-project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Syntra Digital</h3>
@@ -546,8 +463,9 @@
                 <span class="tag">Brand site</span><span class="tag">Modern layout</span><span class="tag">CTA-driven</span>
               </div>
               <div class="project-links">
-                <a class="link" href="images/syntra-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
-                <a class="link" href="images/syntra-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
+                <a class="link" href="viewer.html?img=images/syntra-1.png&title=Syntra%20Digital" target="_blank" rel="noreferrer">
+                  View full page <span>↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -555,9 +473,9 @@
             <div class="preview">
               <div class="preview-bar">
                 <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
-                <small>Scroll inside preview</small>
+                <small>Scroll preview</small>
               </div>
-              <div class="preview-viewport">
+              <div class="preview-viewport js-preview">
                 <img src="images/syntra-1.png" alt="Syntra Digital website screenshot">
               </div>
             </div>
@@ -571,7 +489,8 @@
           </div>
         </article>
 
-        <article class="project">
+        <!-- Saxon -->
+        <article class="project js-project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Saxon Performance Automotive</h3>
@@ -580,8 +499,9 @@
                 <span class="tag">Business site</span><span class="tag">Trust signals</span><span class="tag">Mobile-first</span>
               </div>
               <div class="project-links">
-                <a class="link" href="images/saxon-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
-                <a class="link" href="images/saxon-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
+                <a class="link" href="viewer.html?img=images/saxon-1.png&title=Saxon%20Performance%20Automotive" target="_blank" rel="noreferrer">
+                  View full page <span>↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -589,9 +509,9 @@
             <div class="preview">
               <div class="preview-bar">
                 <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
-                <small>Scroll inside preview</small>
+                <small>Scroll preview</small>
               </div>
-              <div class="preview-viewport">
+              <div class="preview-viewport js-preview">
                 <img src="images/saxon-1.png" alt="Saxon Performance Automotive website screenshot">
               </div>
             </div>
@@ -605,7 +525,8 @@
           </div>
         </article>
 
-        <article class="project">
+        <!-- Veloce -->
+        <article class="project js-project">
           <div class="project-head">
             <div>
               <h3 class="project-title">Veloce Logistics</h3>
@@ -614,8 +535,9 @@
                 <span class="tag">Logistics</span><span class="tag">Informational</span><span class="tag">Credibility</span>
               </div>
               <div class="project-links">
-                <a class="link" href="images/veloce-1.png" target="_blank" rel="noreferrer">View full image <span>↗</span></a>
-                <a class="link" href="images/veloce-2.png" target="_blank" rel="noreferrer">Alt screen <span>↗</span></a>
+                <a class="link" href="viewer.html?img=images/veloce-1.png&title=Veloce%20Logistics" target="_blank" rel="noreferrer">
+                  View full page <span>↗</span>
+                </a>
               </div>
             </div>
           </div>
@@ -623,9 +545,9 @@
             <div class="preview">
               <div class="preview-bar">
                 <div class="lights"><span class="light"></span><span class="light"></span><span class="light"></span></div>
-                <small>Scroll inside preview</small>
+                <small>Scroll preview</small>
               </div>
-              <div class="preview-viewport">
+              <div class="preview-viewport js-preview">
                 <img src="images/veloce-1.png" alt="Veloce Logistics website screenshot">
               </div>
             </div>
@@ -639,20 +561,6 @@
           </div>
         </article>
 
-      </div>
-    </div>
-
-    <div class="section">
-      <h2>More screenshots</h2>
-      <p>Additional previews (scroll inside each thumbnail).</p>
-      <div class="divider"></div>
-
-      <div class="gallery">
-        <div class="thumb"><div class="mini"><img src="images/replay-dev-4.png" alt=""></div></div>
-        <div class="thumb"><div class="mini"><img src="images/syntra-4.png" alt=""></div></div>
-        <div class="thumb"><div class="mini"><img src="images/saxon-4.png" alt=""></div></div>
-        <div class="thumb"><div class="mini"><img src="images/veloce-3.png" alt=""></div></div>
-        <div class="thumb"><div class="mini"><img src="images/veloce-5.png" alt=""></div></div>
       </div>
     </div>
 
@@ -673,7 +581,55 @@
   <a class="top" href="#top">↑ Top</a>
 
   <script>
+    // Year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Scroll handoff: when a project is centered on screen, route wheel scroll into its preview
+    const projects = Array.from(document.querySelectorAll(".js-project"));
+
+    function getActiveProject() {
+      // pick the project closest to the middle of the viewport
+      const mid = window.innerHeight / 2;
+      let best = null;
+      let bestDist = Infinity;
+
+      for (const p of projects) {
+        const r = p.getBoundingClientRect();
+        const center = (r.top + r.bottom) / 2;
+        const dist = Math.abs(center - mid);
+        if (dist < bestDist) { bestDist = dist; best = p; }
+      }
+
+      // Only activate if the project actually overlaps the viewport enough
+      if (!best) return null;
+      const br = best.getBoundingClientRect();
+      const overlap = Math.min(br.bottom, window.innerHeight) - Math.max(br.top, 0);
+      if (overlap < Math.min(380, window.innerHeight * 0.45)) return null;
+
+      return best;
+    }
+
+    window.addEventListener("wheel", (e) => {
+      const active = getActiveProject();
+      if (!active) return;
+
+      const viewport = active.querySelector(".js-preview");
+      if (!viewport) return;
+
+      const atTop = viewport.scrollTop <= 0;
+      const atBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 1;
+
+      // If the preview can scroll in the direction of the wheel, consume the scroll
+      const scrollingDown = e.deltaY > 0;
+      const canScrollDown = !atBottom;
+      const canScrollUp = !atTop;
+
+      if ((scrollingDown && canScrollDown) || (!scrollingDown && canScrollUp)) {
+        e.preventDefault();
+        viewport.scrollTop += e.deltaY;
+      }
+      // else: allow the page to scroll to the next section naturally
+    }, { passive: false });
   </script>
 </body>
 </html>
