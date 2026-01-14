@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leesa Moore | Web Design Portfolio</title>
-  <meta name="description" content="Leesa Moore — hand-coded, conversion-focused informational websites for service-based businesses." />
+  <title>Leesa Moore | Web Designer</title>
+  <meta name="description" content="Hand-coded, clean informational websites for service-based businesses." />
 
   <style>
     :root{
-      --bg0:#070b14;
-      --bg1:#0b1326;
-      --card: rgba(255,255,255,.035);
-      --stroke: rgba(255,255,255,.07);
-      --text:#eaf0ff;
-      --muted:#aab6d3;
+      --bg:#050912;
+      --panel:#0b1326;
+      --soft:rgba(255,255,255,.04);
+      --line:rgba(255,255,255,.08);
+      --text:#eef2ff;
+      --muted:#a9b6d3;
       --accent:#6f8cff;
       --accent2:#8aa6ff;
-      --shadow: 0 14px 40px rgba(0,0,0,.28);
       --radius:18px;
     }
+
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
@@ -26,99 +26,155 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(111,140,255,.22), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(138,166,255,.16), transparent 55%),
-        linear-gradient(180deg, var(--bg0), var(--bg1));
+        radial-gradient(900px 500px at 15% -10%, rgba(111,140,255,.25), transparent 60%),
+        radial-gradient(800px 400px at 85% 10%, rgba(138,166,255,.18), transparent 55%),
+        linear-gradient(180deg, #050912, #0b1326);
     }
-    .wrap{ max-width:1080px; margin:auto; padding:34px 18px 70px; }
-    a{ color:inherit; }
 
+    a{ color:inherit; text-decoration:none; }
+    img{ display:block; width:100%; height:auto; }
+
+    .wrap{
+      max-width:1120px;
+      margin:auto;
+      padding:36px 20px 80px;
+    }
+
+    /* NAV / HERO */
     header{
       display:flex;
       justify-content:space-between;
-      gap:18px;
-      padding-bottom:26px;
+      align-items:flex-start;
+      gap:24px;
+      padding-bottom:48px;
     }
     .badge{
       display:inline-block;
-      padding:6px 10px;
-      border:1px solid var(--stroke);
-      background:rgba(255,255,255,.03);
+      padding:6px 12px;
       border-radius:999px;
+      border:1px solid var(--line);
+      background:var(--soft);
       font-size:13px;
       color:var(--muted);
     }
-    h1{ margin:10px 0 8px; font-size:38px; }
-    .sub{ max-width:60ch; color:var(--muted); line-height:1.65; }
+    h1{
+      margin:14px 0 10px;
+      font-size:40px;
+      letter-spacing:-.7px;
+    }
+    .hero-text{
+      max-width:64ch;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:16px;
+    }
 
-    .btns a{
-      text-decoration:none;
-      padding:10px 14px;
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      padding-top:10px;
+    }
+    .btn{
+      padding:11px 16px;
       border-radius:999px;
-      border:1px solid var(--stroke);
-      margin-left:8px;
+      border:1px solid var(--line);
       font-weight:600;
       font-size:14px;
+      background:var(--soft);
     }
-    .btns .primary{
+    .btn.primary{
       background:linear-gradient(135deg,var(--accent),var(--accent2));
       border:none;
       color:#081022;
     }
 
-    .grid{
+    /* SECTIONS */
+    section{ margin-bottom:56px; }
+    .split{
       display:grid;
-      grid-template-columns:repeat(12,1fr);
-      gap:14px;
+      grid-template-columns:1fr;
+      gap:24px;
     }
-    .card{
-      grid-column:span 12;
-      background:var(--card);
-      border:1px solid var(--stroke);
-      border-radius:var(--radius);
-      padding:18px;
-      box-shadow:var(--shadow);
-    }
-    @media(min-width:920px){
-      .span6{ grid-column:span 6; }
+    @media(min-width:900px){
+      .split{ grid-template-columns:1fr 1fr; }
     }
 
-    h2{ margin:0 0 10px; font-size:16px; }
+    h2{
+      font-size:18px;
+      margin:0 0 10px;
+    }
+    p{ margin:0; }
     .muted{ color:var(--muted); }
-    .divider{ height:1px; background:rgba(255,255,255,.07); margin:16px 0; }
 
-    .proj{ display:flex; gap:14px; flex-wrap:wrap; }
-    .shot{
-      max-width:460px;
-      width:100%;
-      aspect-ratio:16/10;
-      border-radius:14px;
-      overflow:hidden;
-      border:1px solid var(--stroke);
+    ul{
+      margin:14px 0 0;
+      padding-left:18px;
+      color:var(--muted);
     }
-    .shot img{ width:100%; height:100%; object-fit:cover; }
-
-    ul{ padding-left:18px; color:var(--muted); }
     li{ margin:6px 0; }
 
+    .divider{
+      height:1px;
+      background:var(--line);
+      margin:20px 0;
+    }
+
+    /* PROCESS */
+    .steps{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .step{
+      border:1px solid var(--line);
+      background:var(--soft);
+      padding:8px 12px;
+      border-radius:999px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
+    /* PROJECTS */
+    .project{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:24px;
+      padding:28px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
+      border:1px solid var(--line);
+    }
+    @media(min-width:900px){
+      .project{ grid-template-columns: 1.1fr .9fr; }
+    }
+
+    .shot{
+      border-radius:14px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:#0a1020;
+    }
+
+    /* GALLERY */
     .gallery{
       display:grid;
       grid-template-columns:repeat(2,1fr);
-      gap:12px;
+      gap:14px;
     }
-    @media(min-width:920px){
-      .gallery{ grid-template-columns:repeat(4,1fr); }
+    @media(min-width:900px){
+      .gallery{ grid-template-columns:repeat(5,1fr); }
     }
     .thumb{
-      aspect-ratio:4/3;
       border-radius:14px;
       overflow:hidden;
-      border:1px solid var(--stroke);
+      border:1px solid var(--line);
+      background:#0a1020;
     }
-    .thumb img{ width:100%; height:100%; object-fit:cover; }
 
     footer{
-      margin-top:22px;
+      margin-top:60px;
       text-align:center;
       font-size:13px;
       color:var(--muted);
@@ -127,128 +183,134 @@
 </head>
 
 <body>
-<div class="wrap" id="top">
+<div class="wrap">
 
 <header>
   <div>
-    <div class="badge">Hand-coded websites • Service-based businesses</div>
+    <span class="badge">Hand-coded websites • Service-based businesses • U.S.</span>
     <h1>Leesa Moore</h1>
-    <p class="sub">
+    <p class="hero-text">
       I design and hand-code clean, professional informational websites that build trust,
-      load fast, and guide customers to take action.
+      load fast, and guide customers to take action — request a quote, book a service,
+      or get in touch.
     </p>
   </div>
-  <div class="btns">
-    <a class="primary" href="#contact">Request a Consultation</a>
-    <a href="#work">View Work</a>
+  <div class="cta">
+    <a class="btn primary" href="#contact">Request a Consultation</a>
+    <a class="btn" href="#work">View Work</a>
   </div>
 </header>
 
-<div class="grid">
+<section class="split">
+  <div>
+    <h2>What I do</h2>
+    <p class="muted">
+      Informational websites for businesses that need to look professional, credible,
+      and easy to work with online.
+    </p>
+    <ul>
+      <li>Hand-coded HTML / CSS / JS builds</li>
+      <li>Website redesigns & modernization</li>
+      <li>Mobile-first layouts</li>
+      <li>Content structure & CTA clarity</li>
+      <li>Basic SEO setup</li>
+    </ul>
+  </div>
 
-<section class="card span6">
-  <h2>What I do</h2>
-  <p class="muted">
-    Informational and business websites for logistics, service companies, and small brands.
-  </p>
-  <div class="divider"></div>
-  <ul>
-    <li>Hand-coded HTML/CSS/JS builds</li>
-    <li>Website redesigns & modernization</li>
-    <li>Mobile-first layout & performance</li>
-    <li>Clear content structure & CTAs</li>
-  </ul>
+  <div>
+    <h2>My process</h2>
+    <p class="muted">
+      Simple, organized, and efficient. Most informational sites move quickly once content is finalized.
+    </p>
+    <div class="steps">
+      <span class="step">1. Discovery</span>
+      <span class="step">2. Sitemap</span>
+      <span class="step">3. Design + Copy</span>
+      <span class="step">4. Build (hand-coded)</span>
+      <span class="step">5. QA + Mobile</span>
+      <span class="step">6. Launch</span>
+    </div>
+  </div>
 </section>
 
-<section class="card span6" id="work">
+<section id="work">
   <h2>Featured work</h2>
-  <p class="muted">A selection of recent projects across web apps and business sites.</p>
+  <p class="muted">A selection of recent projects across web apps and business websites.</p>
 </section>
 
-<!-- Replay -->
-<section class="card">
-  <h2>Replay Admin Portal</h2>
-  <div class="proj">
-    <div class="shot">
-      <img src="images/replay-dev-site (1).png" alt="Replay Admin Portal">
-    </div>
-    <div>
-      <ul>
-        <li>Custom admin dashboard UI</li>
-        <li>Usage reports & replay management</li>
-        <li>Hand-coded layout focused on clarity</li>
-      </ul>
-    </div>
+<section class="project">
+  <div class="shot"><img src="images/replay-dev-1.png" alt="Replay Admin Portal"></div>
+  <div>
+    <h2>Replay Admin Portal (Web App)</h2>
+    <p class="muted">
+      Clean admin interface for managing conference replays, usage reporting,
+      and user access.
+    </p>
+    <ul>
+      <li>Custom dashboard UI</li>
+      <li>Role-based navigation</li>
+      <li>Built for clarity, speed, and usability</li>
+    </ul>
   </div>
 </section>
 
-<!-- Syntra -->
-<section class="card">
-  <h2>Syntra Digital</h2>
-  <div class="proj">
-    <div class="shot">
-      <img src="images/syntra-digital-site (1).png" alt="Syntra Digital Website">
-    </div>
-    <div>
-      <ul>
-        <li>Brand-forward service website</li>
-        <li>Clear service offerings & CTAs</li>
-        <li>Modern dark UI with crisp layout</li>
-      </ul>
-    </div>
+<section class="project">
+  <div class="shot"><img src="images/syntra-1.png" alt="Syntra Digital Website"></div>
+  <div>
+    <h2>Syntra Digital</h2>
+    <p class="muted">
+      Brand-forward service website designed to clearly present offerings and build trust.
+    </p>
+    <ul>
+      <li>Modern typography & layout</li>
+      <li>Clear service structure</li>
+      <li>Strong calls-to-action</li>
+    </ul>
   </div>
 </section>
 
-<!-- Saxon -->
-<section class="card">
-  <h2>Saxon Performance Automotive</h2>
-  <div class="proj">
-    <div class="shot">
-      <img src="images/saxon-performance-site (1).png" alt="Saxon Performance Automotive">
-    </div>
-    <div>
-      <ul>
-        <li>Business website for automotive services</li>
-        <li>Trust-focused layout & contact flow</li>
-        <li>Mobile-optimized design</li>
-      </ul>
-    </div>
+<section class="project">
+  <div class="shot"><img src="images/saxon-1.png" alt="Saxon Performance Automotive"></div>
+  <div>
+    <h2>Saxon Performance Automotive</h2>
+    <p class="muted">
+      Business website focused on services, trust signals, and an easy contact flow.
+    </p>
+    <ul>
+      <li>Service-focused layout</li>
+      <li>Clear CTAs (call/text/contact)</li>
+      <li>Mobile-optimized design</li>
+    </ul>
   </div>
 </section>
 
-<!-- Veloce -->
-<section class="card">
-  <h2>Veloce Logistics</h2>
-  <div class="proj">
-    <div class="shot">
-      <img src="images/VeloceLogistics_HomePage.png" alt="Veloce Logistics Website">
-    </div>
-    <div>
-      <ul>
-        <li>Informational logistics website</li>
-        <li>Coverage, services & contact pages</li>
-        <li>Clean, professional layout</li>
-      </ul>
-    </div>
+<section class="project">
+  <div class="shot"><img src="images/veloce-1.png" alt="Veloce Logistics"></div>
+  <div>
+    <h2>Veloce Logistics</h2>
+    <p class="muted">
+      Informational logistics website with coverage, services, and contact pages.
+    </p>
+    <ul>
+      <li>Clean, professional presentation</li>
+      <li>Service & coverage clarity</li>
+      <li>Designed for credibility</li>
+    </ul>
   </div>
 </section>
 
-<!-- Gallery -->
-<section class="card">
+<section>
   <h2>More work</h2>
   <div class="gallery">
-    <div class="thumb"><img src="images/replay-dev-site (3).png"></div>
-    <div class="thumb"><img src="images/replay-dev-site (5).png"></div>
-    <div class="thumb"><img src="images/syntra-digital-site (4).png"></div>
-    <div class="thumb"><img src="images/saxon-performance-site (4).png"></div>
-    <div class="thumb"><img src="images/VeloceLogistics_Services.png"></div>
-    <div class="thumb"><img src="images/VeloceLogistics_About.png"></div>
-    <div class="thumb"><img src="images/VeloceLogistics_Contact.png"></div>
-    <div class="thumb"><img src="images/VeloceLogistics_Coverage.png"></div>
+    <div class="thumb"><img src="images/replay-dev-3.png"></div>
+    <div class="thumb"><img src="images/syntra-4.png"></div>
+    <div class="thumb"><img src="images/saxon-4.png"></div>
+    <div class="thumb"><img src="images/veloce-3.png"></div>
+    <div class="thumb"><img src="images/veloce-5.png"></div>
   </div>
 </section>
 
-<section class="card" id="contact">
+<section id="contact">
   <h2>Contact</h2>
   <ul>
     <li>Fiverr: <strong>@leesamoore419</strong></li>
@@ -256,9 +318,8 @@
   </ul>
 </section>
 
-</div>
-
 <footer>© <span id="y"></span> Leesa Moore</footer>
+
 </div>
 
 <script>
