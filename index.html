@@ -3,328 +3,682 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leesa Moore | Web Designer</title>
-  <meta name="description" content="Hand-coded, clean informational websites for service-based businesses." />
+  <title>Leesa Moore | Web Design & Development</title>
+  <meta name="description" content="Leesa Moore — hand-coded websites with clean design, strong UX, and fast performance." />
 
   <style>
     :root{
-      --bg:#050912;
-      --panel:#0b1326;
-      --soft:rgba(255,255,255,.04);
-      --line:rgba(255,255,255,.08);
+      --bg0:#050912;
+      --bg1:#070f22;
+      --panel: rgba(255,255,255,.035);
+      --stroke: rgba(255,255,255,.09);
       --text:#eef2ff;
       --muted:#a9b6d3;
+
       --accent:#6f8cff;
       --accent2:#8aa6ff;
-      --radius:18px;
+      --hot:#7c5cff;
+
+      --radius:22px;
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+
+      --max: 1140px;
     }
 
     *{ box-sizing:border-box; }
     html{ scroll-behavior:smooth; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(900px 500px at 15% -10%, rgba(111,140,255,.25), transparent 60%),
-        radial-gradient(800px 400px at 85% 10%, rgba(138,166,255,.18), transparent 55%),
-        linear-gradient(180deg, #050912, #0b1326);
+        radial-gradient(900px 500px at 18% -10%, rgba(111,140,255,.30), transparent 60%),
+        radial-gradient(800px 450px at 88% 10%, rgba(124,92,255,.22), transparent 60%),
+        radial-gradient(700px 420px at 50% 120%, rgba(138,166,255,.14), transparent 60%),
+        linear-gradient(180deg, var(--bg0), var(--bg1));
     }
+    a{ color:inherit; }
+    .wrap{ max-width: var(--max); margin:auto; padding: 34px 20px 90px; }
 
-    a{ color:inherit; text-decoration:none; }
-    img{ display:block; width:100%; height:auto; }
-
-    .wrap{
-      max-width:1120px;
-      margin:auto;
-      padding:36px 20px 80px;
-    }
-
-    /* NAV / HERO */
-    header{
+    /* Top nav */
+    .nav{
       display:flex;
+      align-items:center;
       justify-content:space-between;
-      align-items:flex-start;
-      gap:24px;
-      padding-bottom:48px;
+      gap:14px;
+      padding: 12px 0 26px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .mark{
+      width:12px; height:12px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--hot));
+      box-shadow: 0 0 0 6px rgba(111,140,255,.10);
+    }
+    .brand b{ letter-spacing:.2px; }
+    .navlinks{
+      display:flex; gap:10px; flex-wrap:wrap; align-items:center;
+    }
+    .chip{
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.025);
+      color: var(--muted);
+      font-weight: 650;
+      font-size: 13px;
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+    }
+    .chip:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.16); }
+
+    /* Hero */
+    .hero{
+      padding: 18px 0 30px;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+    }
+    @media(min-width: 980px){
+      .hero{ grid-template-columns: 1.15fr .85fr; align-items:start; }
     }
     .badge{
-      display:inline-block;
-      padding:6px 12px;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:7px 12px;
       border-radius:999px;
-      border:1px solid var(--line);
-      background:var(--soft);
-      font-size:13px;
-      color:var(--muted);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      color: var(--muted);
+      font-size: 13px;
+      width: fit-content;
+    }
+    .badge .dot{
+      width:7px; height:7px; border-radius:999px;
+      background: linear-gradient(135deg, var(--accent), var(--hot));
     }
     h1{
-      margin:14px 0 10px;
-      font-size:40px;
-      letter-spacing:-.7px;
+      margin: 12px 0 10px;
+      font-size: 44px;
+      letter-spacing: -1px;
+      line-height: 1.08;
     }
-    .hero-text{
-      max-width:64ch;
-      color:var(--muted);
-      line-height:1.65;
-      font-size:16px;
+    .lead{
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 16.5px;
+      max-width: 65ch;
     }
-
-    .cta{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      padding-top:10px;
+    .hero-cta{
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px;
     }
     .btn{
-      padding:11px 16px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      font-weight:600;
-      font-size:14px;
-      background:var(--soft);
+      text-decoration:none;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      font-weight: 750;
+      font-size: 14px;
+      transition: transform .12s ease, border-color .12s ease;
     }
+    .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
     .btn.primary{
-      background:linear-gradient(135deg,var(--accent),var(--accent2));
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
       border:none;
       color:#081022;
     }
 
-    /* SECTIONS */
-    section{ margin-bottom:56px; }
-    .split{
+    .hero-card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      padding: 16px;
+      box-shadow: var(--shadow);
+    }
+    .stats{
       display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 12px;
     }
-    @media(min-width:900px){
-      .split{ grid-template-columns:1fr 1fr; }
+    .stat{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.02);
+      border-radius: 16px;
+      padding: 12px;
     }
+    .stat b{ display:block; font-size: 14px; }
+    .stat span{ display:block; margin-top: 6px; color: var(--muted); font-size: 13px; line-height: 1.45; }
 
-    h2{
-      font-size:18px;
-      margin:0 0 10px;
+    /* Section rhythm */
+    .section{ margin-top: 44px; }
+    .section h2{
+      margin:0;
+      font-size: 18px;
+      letter-spacing: -.2px;
     }
-    p{ margin:0; }
-    .muted{ color:var(--muted); }
-
-    ul{
-      margin:14px 0 0;
-      padding-left:18px;
-      color:var(--muted);
-    }
-    li{ margin:6px 0; }
-
+    .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
     .divider{
       height:1px;
-      background:var(--line);
-      margin:20px 0;
+      background: rgba(255,255,255,.10);
+      margin: 18px 0 0;
     }
 
-    /* PROCESS */
+    /* Process */
     .steps{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:16px;
+      display:flex; gap:10px; flex-wrap:wrap; margin-top: 14px;
     }
     .step{
-      border:1px solid var(--line);
-      background:var(--soft);
-      padding:8px 12px;
-      border-radius:999px;
-      font-size:13px;
-      color:var(--muted);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-weight: 650;
     }
 
-    /* PROJECTS */
+    /* Projects */
+    .projects{ display:flex; flex-direction:column; gap:18px; margin-top: 18px; }
+
     .project{
-      display:grid;
-      grid-template-columns:1fr;
-      gap:24px;
-      padding:28px;
-      border-radius:var(--radius);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01));
-      border:1px solid var(--line);
-    }
-    @media(min-width:900px){
-      .project{ grid-template-columns: 1.1fr .9fr; }
-    }
-
-    .shot{
-      border-radius:14px;
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.015));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
       overflow:hidden;
-      border:1px solid var(--line);
-      background:#0a1020;
     }
 
-    /* GALLERY */
-    .gallery{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:14px;
+    .project-head{
+      padding: 18px 18px 0;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
     }
-    @media(min-width:900px){
-      .gallery{ grid-template-columns:repeat(5,1fr); }
+    @media(min-width: 980px){
+      .project-head{ flex-direction:row; align-items:flex-start; justify-content:space-between; }
+    }
+    .project-title{
+      margin:0;
+      font-size: 18px;
+    }
+    .tags{
+      display:flex; gap:8px; flex-wrap:wrap; margin-top: 6px;
+    }
+    .tag{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.02);
+      color: var(--muted);
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 12.5px;
+      font-weight: 650;
+    }
+    .project-desc{
+      color: var(--muted);
+      line-height: 1.6;
+      margin: 0;
+      max-width: 72ch;
+      font-size: 14px;
+    }
+
+    .project-body{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 16px 18px 18px;
+    }
+    @media(min-width: 980px){
+      .project-body{ grid-template-columns: 1.25fr .75fr; align-items:start; }
+    }
+
+    /* BIG previews (the key change) */
+    .preview{
+      border:1px solid rgba(255,255,255,.12);
+      background: #080f1f;
+      border-radius: 18px;
+      overflow:hidden;
+    }
+    .preview-bar{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.02);
+    }
+    .lights{ display:flex; gap:7px; }
+    .light{
+      width:10px; height:10px; border-radius:999px;
+      background: rgba(255,255,255,.18);
+    }
+    .preview-bar small{ color: var(--muted); font-weight: 650; }
+
+    .preview-viewport{
+      height: 520px;              /* BIGGER so people can actually see it */
+      overflow:auto;              /* scroll within the preview */
+      overscroll-behavior: contain;
+    }
+    @media(max-width: 520px){
+      .preview-viewport{ height: 460px; }
+    }
+    .preview-viewport img{
+      width:100%;
+      height:auto;
+      display:block;
+    }
+
+    .bullets{
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 14px;
+    }
+    .bullets li{ margin: 7px 0; }
+
+    .project-links{
+      display:flex; gap:10px; flex-wrap:wrap;
+      margin-top: 10px;
+    }
+    .link{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 9px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 13px;
+      text-decoration:none;
+    }
+    .link span{ color: var(--muted); font-weight: 650; }
+    .link:hover{ border-color: rgba(255,255,255,.18); }
+
+    /* Gallery */
+    .gallery{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+    @media(min-width: 980px){
+      .gallery{ grid-template-columns: repeat(5, 1fr); }
     }
     .thumb{
-      border-radius:14px;
+      border:1px solid var(--stroke);
+      border-radius: 16px;
       overflow:hidden;
-      border:1px solid var(--line);
-      background:#0a1020;
+      background:#080f1f;
+    }
+    .thumb .mini{
+      height: 220px;
+      overflow:auto;
+    }
+    .thumb img{ width:100%; display:block; }
+
+    /* Contact */
+    .contact{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      margin-top: 18px;
+    }
+    .contact ul{
+      margin: 10px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    footer{
+      margin-top: 54px;
+      text-align:center;
+      color: var(--muted);
+      font-size: 13px;
     }
 
-    footer{
-      margin-top:60px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
+    /* Floating top button */
+    .top{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border:1px solid var(--stroke);
+      background: rgba(8, 15, 31, .75);
+      backdrop-filter: blur(10px);
+      font-weight: 750;
+      font-size: 13px;
+      text-decoration:none;
+      box-shadow: var(--shadow);
     }
   </style>
 </head>
 
 <body>
-<div class="wrap">
+  <a id="top"></a>
+  <div class="wrap">
 
-<header>
-  <div>
-    <span class="badge">Hand-coded websites • Service-based businesses • U.S.</span>
-    <h1>Leesa Moore</h1>
-    <p class="hero-text">
-      I design and hand-code clean, professional informational websites that build trust,
-      load fast, and guide customers to take action — request a quote, book a service,
-      or get in touch.
-    </p>
-  </div>
-  <div class="cta">
-    <a class="btn primary" href="#contact">Request a Consultation</a>
-    <a class="btn" href="#work">View Work</a>
-  </div>
-</header>
+    <div class="nav">
+      <div class="brand">
+        <span class="mark"></span>
+        <div>
+          <b>Leesa Moore</b><br>
+          <span style="color:var(--muted); font-size:12.5px;">Web Design & Development</span>
+        </div>
+      </div>
 
-<section class="split">
-  <div>
-    <h2>What I do</h2>
-    <p class="muted">
-      Informational websites for businesses that need to look professional, credible,
-      and easy to work with online.
-    </p>
-    <ul>
-      <li>Hand-coded HTML / CSS / JS builds</li>
-      <li>Website redesigns & modernization</li>
-      <li>Mobile-first layouts</li>
-      <li>Content structure & CTA clarity</li>
-      <li>Basic SEO setup</li>
-    </ul>
-  </div>
-
-  <div>
-    <h2>My process</h2>
-    <p class="muted">
-      Simple, organized, and efficient. Most informational sites move quickly once content is finalized.
-    </p>
-    <div class="steps">
-      <span class="step">1. Discovery</span>
-      <span class="step">2. Sitemap</span>
-      <span class="step">3. Design + Copy</span>
-      <span class="step">4. Build (hand-coded)</span>
-      <span class="step">5. QA + Mobile</span>
-      <span class="step">6. Launch</span>
+      <div class="navlinks">
+        <a class="chip" href="#work">Work</a>
+        <a class="chip" href="#process">Process</a>
+        <a class="chip" href="#contact">Contact</a>
+      </div>
     </div>
+
+    <div class="hero">
+      <div>
+        <div class="badge"><span class="dot"></span> Hand-coded websites for service-based businesses</div>
+        <h1>Clean, modern sites that look credible and convert.</h1>
+        <p class="lead">
+          I build crisp informational websites (and web app interfaces) that help businesses
+          present services clearly, build trust fast, and guide customers to take action —
+          request a quote, book a service, or contact.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn primary" href="#contact">Request a Consultation</a>
+          <a class="btn" href="#work">See Projects</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h2 style="margin:0; font-size:16px;">What you can expect</h2>
+        <div class="stats">
+          <div class="stat">
+            <b>Fast + clean builds</b>
+            <span>Hand-coded HTML/CSS/JS for performance and control.</span>
+          </div>
+          <div class="stat">
+            <b>Mobile-first layout</b>
+            <span>Looks sharp on phones, tablets, and desktops.</span>
+          </div>
+          <div class="stat">
+            <b>Clear structure</b>
+            <span>Headings, CTAs, and sections that make sense.</span>
+          </div>
+          <div class="stat">
+            <b>Professional polish</b>
+            <span>Typography, spacing, and details that feel premium.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section" id="process">
+      <h2>My process</h2>
+      <p>Simple, organized, and efficient. Most informational sites move quickly once content is finalized.</p>
+      <div class="steps">
+        <span class="step">1. Discovery</span>
+        <span class="step">2. Sitemap</span>
+        <span class="step">3. Design + Copy</span>
+        <span class="step">4. Build (hand-coded)</span>
+        <span class="step">5. QA + Mobile</span>
+        <span class="step">6. Launch</span>
+      </div>
+      <div class="divider"></div>
+    </div>
+
+    <div class="section" id="work">
+      <h2>Featured work</h2>
+      <p>Scroll inside each preview to see the full page without squinting.</p>
+
+      <div class="projects">
+
+        <!-- Replay -->
+        <article class="project">
+          <div class="project-head">
+            <div>
+              <h3 class="project-title">Replay Admin Portal (Web App)</h3>
+              <p class="project-desc">Clean admin UI for managing conference replays, usage reporting, and user access.</p>
+              <div class="tags">
+                <span class="tag">Admin UI</span>
+                <span class="tag">Clarity-first</span>
+                <span class="tag">Hand-coded</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="link" href="images/replay-dev-1.png" target="_blank" rel="noreferrer">
+                View full image <span>↗</span>
+              </a>
+              <a class="link" href="images/replay-dev-2.png" target="_blank" rel="noreferrer">
+                Alt screen <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="preview">
+              <div class="preview-bar">
+                <div class="lights">
+                  <span class="light"></span><span class="light"></span><span class="light"></span>
+                </div>
+                <small>Scroll preview</small>
+              </div>
+              <div class="preview-viewport">
+                <img src="images/replay-dev-1.png" alt="Replay Admin Portal screenshot">
+              </div>
+            </div>
+
+            <div>
+              <ul class="bullets">
+                <li>Custom dashboard layout + clean page structure</li>
+                <li>Role-based navigation patterns</li>
+                <li>Designed for speed, readability, and usability</li>
+              </ul>
+              <div class="divider"></div>
+              <ul class="bullets">
+                <li><b>Best for:</b> internal tools, admin portals, reporting dashboards</li>
+                <li><b>Focus:</b> clarity, hierarchy, and simple workflows</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Syntra -->
+        <article class="project">
+          <div class="project-head">
+            <div>
+              <h3 class="project-title">Syntra Digital</h3>
+              <p class="project-desc">Brand-forward service site built to clearly present offerings and build trust.</p>
+              <div class="tags">
+                <span class="tag">Brand site</span>
+                <span class="tag">Modern layout</span>
+                <span class="tag">CTA-driven</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="link" href="images/syntra-1.png" target="_blank" rel="noreferrer">
+                View full image <span>↗</span>
+              </a>
+              <a class="link" href="images/syntra-2.png" target="_blank" rel="noreferrer">
+                Alt screen <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="preview">
+              <div class="preview-bar">
+                <div class="lights">
+                  <span class="light"></span><span class="light"></span><span class="light"></span>
+                </div>
+                <small>Scroll preview</small>
+              </div>
+              <div class="preview-viewport">
+                <img src="images/syntra-1.png" alt="Syntra Digital website screenshot">
+              </div>
+            </div>
+
+            <div>
+              <ul class="bullets">
+                <li>Clean typography + crisp section spacing</li>
+                <li>Service structure built for fast scanning</li>
+                <li>Strong calls-to-action and trust signals</li>
+              </ul>
+              <div class="divider"></div>
+              <ul class="bullets">
+                <li><b>Best for:</b> service providers, consultants, agencies</li>
+                <li><b>Focus:</b> brand clarity + lead generation</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Saxon -->
+        <article class="project">
+          <div class="project-head">
+            <div>
+              <h3 class="project-title">Saxon Performance Automotive</h3>
+              <p class="project-desc">Business website focused on services, credibility, and an easy contact flow.</p>
+              <div class="tags">
+                <span class="tag">Business site</span>
+                <span class="tag">Trust signals</span>
+                <span class="tag">Mobile-first</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="link" href="images/saxon-1.png" target="_blank" rel="noreferrer">
+                View full image <span>↗</span>
+              </a>
+              <a class="link" href="images/saxon-2.png" target="_blank" rel="noreferrer">
+                Alt screen <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="preview">
+              <div class="preview-bar">
+                <div class="lights">
+                  <span class="light"></span><span class="light"></span><span class="light"></span>
+                </div>
+                <small>Scroll preview</small>
+              </div>
+              <div class="preview-viewport">
+                <img src="images/saxon-1.png" alt="Saxon Performance Automotive website screenshot">
+              </div>
+            </div>
+
+            <div>
+              <ul class="bullets">
+                <li>Service-forward page flow + simple navigation</li>
+                <li>Clear CTAs (call/text/contact) placed intentionally</li>
+                <li>Designed to feel credible and professional</li>
+              </ul>
+              <div class="divider"></div>
+              <ul class="bullets">
+                <li><b>Best for:</b> local services, trades, automotive, home services</li>
+                <li><b>Focus:</b> clear services + quick contact</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <!-- Veloce -->
+        <article class="project">
+          <div class="project-head">
+            <div>
+              <h3 class="project-title">Veloce Logistics</h3>
+              <p class="project-desc">Informational logistics website with coverage, services, and contact pages.</p>
+              <div class="tags">
+                <span class="tag">Logistics</span>
+                <span class="tag">Informational site</span>
+                <span class="tag">Credibility</span>
+              </div>
+            </div>
+            <div class="project-links">
+              <a class="link" href="images/veloce-1.png" target="_blank" rel="noreferrer">
+                View full image <span>↗</span>
+              </a>
+              <a class="link" href="images/veloce-2.png" target="_blank" rel="noreferrer">
+                Alt screen <span>↗</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="project-body">
+            <div class="preview">
+              <div class="preview-bar">
+                <div class="lights">
+                  <span class="light"></span><span class="light"></span><span class="light"></span>
+                </div>
+                <small>Scroll preview</small>
+              </div>
+              <div class="preview-viewport">
+                <img src="images/veloce-1.png" alt="Veloce Logistics website screenshot">
+              </div>
+            </div>
+
+            <div>
+              <ul class="bullets">
+                <li>Clear layout for services + coverage areas</li>
+                <li>Designed to feel trustworthy and established</li>
+                <li>Contact-forward structure</li>
+              </ul>
+              <div class="divider"></div>
+              <ul class="bullets">
+                <li><b>Best for:</b> moving companies, freight/logistics, transport</li>
+                <li><b>Focus:</b> credibility + quote requests</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>More screenshots</h2>
+      <p>Quick additional previews (scroll inside each thumbnail).</p>
+
+      <div class="gallery">
+        <div class="thumb"><div class="mini"><img src="images/replay-dev-4.png" alt=""></div></div>
+        <div class="thumb"><div class="mini"><img src="images/syntra-4.png" alt=""></div></div>
+        <div class="thumb"><div class="mini"><img src="images/saxon-4.png" alt=""></div></div>
+        <div class="thumb"><div class="mini"><img src="images/veloce-3.png" alt=""></div></div>
+        <div class="thumb"><div class="mini"><img src="images/veloce-5.png" alt=""></div></div>
+      </div>
+    </div>
+
+    <div class="section" id="contact">
+      <h2>Contact</h2>
+      <p>Want to chat about a website build or redesign? Reach out below.</p>
+
+      <div class="contact">
+        <ul>
+          <li>Fiverr: <b>@leesamoore419</b></li>
+          <li>Email: <b>hello@syntrasolutions.digital</b></li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>© <span id="y"></span> Leesa Moore</footer>
   </div>
-</section>
 
-<section id="work">
-  <h2>Featured work</h2>
-  <p class="muted">A selection of recent projects across web apps and business websites.</p>
-</section>
+  <a class="top" href="#top">↑ Top</a>
 
-<section class="project">
-  <div class="shot"><img src="images/replay-dev-1.png" alt="Replay Admin Portal"></div>
-  <div>
-    <h2>Replay Admin Portal (Web App)</h2>
-    <p class="muted">
-      Clean admin interface for managing conference replays, usage reporting,
-      and user access.
-    </p>
-    <ul>
-      <li>Custom dashboard UI</li>
-      <li>Role-based navigation</li>
-      <li>Built for clarity, speed, and usability</li>
-    </ul>
-  </div>
-</section>
-
-<section class="project">
-  <div class="shot"><img src="images/syntra-1.png" alt="Syntra Digital Website"></div>
-  <div>
-    <h2>Syntra Digital</h2>
-    <p class="muted">
-      Brand-forward service website designed to clearly present offerings and build trust.
-    </p>
-    <ul>
-      <li>Modern typography & layout</li>
-      <li>Clear service structure</li>
-      <li>Strong calls-to-action</li>
-    </ul>
-  </div>
-</section>
-
-<section class="project">
-  <div class="shot"><img src="images/saxon-1.png" alt="Saxon Performance Automotive"></div>
-  <div>
-    <h2>Saxon Performance Automotive</h2>
-    <p class="muted">
-      Business website focused on services, trust signals, and an easy contact flow.
-    </p>
-    <ul>
-      <li>Service-focused layout</li>
-      <li>Clear CTAs (call/text/contact)</li>
-      <li>Mobile-optimized design</li>
-    </ul>
-  </div>
-</section>
-
-<section class="project">
-  <div class="shot"><img src="images/veloce-1.png" alt="Veloce Logistics"></div>
-  <div>
-    <h2>Veloce Logistics</h2>
-    <p class="muted">
-      Informational logistics website with coverage, services, and contact pages.
-    </p>
-    <ul>
-      <li>Clean, professional presentation</li>
-      <li>Service & coverage clarity</li>
-      <li>Designed for credibility</li>
-    </ul>
-  </div>
-</section>
-
-<section>
-  <h2>More work</h2>
-  <div class="gallery">
-    <div class="thumb"><img src="images/replay-dev-3.png"></div>
-    <div class="thumb"><img src="images/syntra-4.png"></div>
-    <div class="thumb"><img src="images/saxon-4.png"></div>
-    <div class="thumb"><img src="images/veloce-3.png"></div>
-    <div class="thumb"><img src="images/veloce-5.png"></div>
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact</h2>
-  <ul>
-    <li>Fiverr: <strong>@leesamoore419</strong></li>
-    <li>Email: <strong>hello@syntrasolutions.digital</strong></li>
-  </ul>
-</section>
-
-<footer>© <span id="y"></span> Leesa Moore</footer>
-
-</div>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
