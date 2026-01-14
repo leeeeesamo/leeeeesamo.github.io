@@ -4,44 +4,46 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Leesa Moore | Web Design Portfolio</title>
-  <meta name="description" content="Leesa Moore — clean, conversion-focused informational websites for service-based businesses." />
+  <meta name="description" content="Leesa Moore — hand-coded, conversion-focused informational websites for service-based businesses." />
+
   <style>
     :root{
       --bg0:#070b14;
       --bg1:#0b1326;
-      --card: rgba(255,255,255,.04);
-      --stroke: rgba(255,255,255,.08);
+      --card: rgba(255,255,255,.035);
+      --stroke: rgba(255,255,255,.07);
       --text:#eaf0ff;
       --muted:#aab6d3;
       --accent:#6f8cff;
       --accent2:#8aa6ff;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --shadow: 0 14px 40px rgba(0,0,0,.28);
       --radius:18px;
     }
     *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
       background:
-        radial-gradient(1200px 600px at 20% -10%, rgba(111,140,255,.25), transparent 60%),
-        radial-gradient(900px 500px at 90% 10%, rgba(138,166,255,.18), transparent 55%),
+        radial-gradient(1200px 600px at 20% -10%, rgba(111,140,255,.24), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(138,166,255,.16), transparent 55%),
         linear-gradient(180deg, var(--bg0), var(--bg1));
     }
     a{ color:inherit; }
     .wrap{
-      max-width: 1040px;
+      max-width: 1080px;
       margin: 0 auto;
       padding: 34px 18px 70px;
     }
 
-    /* Header */
+    /* Header / hero */
     header{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap:18px;
-      padding: 10px 0 24px;
+      padding: 10px 0 26px;
     }
     .badge{
       display:inline-flex;
@@ -58,15 +60,15 @@
     }
     h1{
       margin: 10px 0 8px;
-      font-size: 36px;
-      letter-spacing: -0.6px;
-      line-height: 1.15;
+      font-size: 38px;
+      letter-spacing: -0.7px;
+      line-height: 1.12;
     }
     .sub{
       margin: 0;
       color: var(--muted);
-      max-width: 56ch;
-      line-height: 1.6;
+      max-width: 62ch;
+      line-height: 1.65;
       font-size: 15.5px;
     }
 
@@ -85,7 +87,7 @@
       border: 1px solid var(--stroke);
       background: rgba(255,255,255,.02);
       color: var(--text);
-      font-weight: 600;
+      font-weight: 700;
       font-size: 14px;
       transition: transform .12s ease, background .12s ease, border-color .12s ease;
     }
@@ -116,15 +118,43 @@
       .span4{ grid-column: span 4; }
       .span8{ grid-column: span 8; }
     }
+
     h2{
       margin:0 0 10px;
       font-size: 16px;
       letter-spacing: -.2px;
     }
     .muted{ color: var(--muted); }
-    .small{ font-size: 13.5px; line-height: 1.55; }
+    .small{ font-size: 13.6px; line-height: 1.6; }
+    strong{ color: var(--text); }
 
-    /* Project cards */
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.07);
+      margin: 16px 0;
+    }
+
+    /* Pills */
+    .kpi{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .pill{
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.02);
+      border-radius: 999px;
+      padding: 7px 10px;
+      font-size: 13px;
+      color: var(--muted);
+      width: fit-content;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+
+    /* Projects */
     .proj{
       display:flex;
       gap: 14px;
@@ -133,7 +163,7 @@
     }
     .shot{
       width: 100%;
-      max-width: 420px;
+      max-width: 460px;
       border-radius: 14px;
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.03);
@@ -150,7 +180,6 @@
       object-fit: cover;
       display:block;
     }
-
     ul{
       margin: 10px 0 0;
       padding-left: 18px;
@@ -158,22 +187,34 @@
     }
     li{ margin: 6px 0; }
 
-    .kpi{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-top: 12px;
+    /* Gallery */
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
     }
-    .pill{
+    @media(min-width: 920px){
+      .gallery{ grid-template-columns: repeat(4, 1fr); }
+    }
+    .thumb{
       border:1px solid var(--stroke);
       background: rgba(255,255,255,.02);
-      border-radius: 999px;
-      padding: 7px 10px;
-      font-size: 13px;
+      border-radius: 14px;
+      overflow:hidden;
+      aspect-ratio: 4/3;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       color: var(--muted);
-      width: fit-content;
+    }
+    .thumb img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      display:block;
     }
 
+    /* Footer */
     footer{
       margin-top: 22px;
       color: var(--muted);
@@ -181,91 +222,192 @@
       text-align:center;
       opacity: .9;
     }
-    .divider{
-      height:1px;
-      background: rgba(255,255,255,.07);
-      margin: 18px 0;
+
+    /* Back to top */
+    .toplink{
+      position: fixed;
+      right: 16px;
+      bottom: 16px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(10, 16, 30, .65);
+      backdrop-filter: blur(10px);
+      text-decoration:none;
+      font-weight:700;
+      font-size: 13px;
+      color: var(--text);
+      box-shadow: var(--shadow);
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
+  <div class="wrap" id="top">
     <header>
       <div>
-        <div class="badge">Website Design • Service Businesses • U.S.</div>
+        <div class="badge">Hand-coded websites • Service-based businesses • U.S.</div>
         <h1>Leesa Moore</h1>
         <p class="sub">
-          I design clean, conversion-focused informational websites for service-based businesses—built to look professional,
-          load fast, and make it easy for customers to contact you.
+          I design and hand-code clean, professional informational websites that build trust, load fast, and guide customers
+          to take action (call, request a quote, book, or contact).
         </p>
+
         <div class="kpi">
-          <div class="pill">Mobile-first</div>
-          <div class="pill">Clean layout + copy</div>
-          <div class="pill">Simple SEO basics</div>
-          <div class="pill">Fast turnaround</div>
+          <div class="pill">✨ Mobile-first</div>
+          <div class="pill">⚡ Fast load times</div>
+          <div class="pill">🧭 Clear navigation</div>
+          <div class="pill">📈 Conversion-focused</div>
         </div>
       </div>
 
       <div class="btns">
         <a class="btn primary" href="#contact">Request a Consultation</a>
         <a class="btn" href="#work">View Work</a>
+        <!-- Optional: if you later upload a PDF named portfolio.pdf -->
+        <!-- <a class="btn" href="portfolio.pdf">Download PDF</a> -->
       </div>
     </header>
 
     <div class="grid">
+      <!-- What I do -->
       <section class="card span6">
         <h2>What I do</h2>
         <p class="muted small">
-          Informational websites that build trust and present your services clearly. Ideal for moving companies, logistics,
-          local services, and small businesses that need a strong online presence.
+          I build informational websites for small businesses that need to look trustworthy and professional online.
+          Perfect for logistics, moving companies, local services, and small brands.
         </p>
         <div class="divider"></div>
         <ul>
           <li>Informational / brochure websites</li>
           <li>Website redesigns & modernization</li>
           <li>Content cleanup (headings, structure, clarity)</li>
-          <li>Mobile-friendly layout + basic SEO setup</li>
+          <li>Mobile polish + performance-first build</li>
+          <li>Basic SEO setup (titles, meta, structure)</li>
         </ul>
       </section>
 
+      <!-- Featured work overview -->
       <section class="card span6" id="work">
         <h2>Featured work</h2>
         <p class="muted small">
-          Below are a few examples. I can share additional samples on request depending on your industry and needs.
+          A few examples below. I can share additional samples based on your industry and goals.
         </p>
         <div class="divider"></div>
         <div class="kpi">
           <div class="pill">Informational sites</div>
           <div class="pill">Landing pages</div>
-          <div class="pill">Redesigns</div>
+          <div class="pill">Admin portals</div>
+          <div class="pill">Brand-forward design</div>
         </div>
       </section>
 
-      <section class="card">
-        <h2>Project: (Replace with real project name)</h2>
+      <!-- Process -->
+      <section class="card" id="process">
+        <h2>My process</h2>
         <p class="muted small">
-          Goal: A clean informational website with clear services, trust signals, and a strong “Request a Quote” flow.
+          Simple, organized, and built to keep projects moving. Most informational sites can be completed quickly once content is finalized.
+        </p>
+        <div class="divider"></div>
+
+        <div class="kpi">
+          <div class="pill"><strong>1.</strong> Discovery</div>
+          <div class="pill"><strong>2.</strong> Sitemap + Wireframe</div>
+          <div class="pill"><strong>3.</strong> Design + Copy Polish</div>
+          <div class="pill"><strong>4.</strong> Build (Hand-coded)</div>
+          <div class="pill"><strong>5.</strong> QA + Mobile Check</div>
+          <div class="pill"><strong>6.</strong> Launch + Handoff</div>
+        </div>
+
+        <ul>
+          <li><strong>Discovery:</strong> clarify goals, pages, content needs, and design direction.</li>
+          <li><strong>Design + build:</strong> I hand-code the site with a clean layout, speed, and a professional look.</li>
+          <li><strong>Launch:</strong> final review + basic SEO setup + handoff support.</li>
+        </ul>
+      </section>
+
+      <!-- PROJECT 1 -->
+      <section class="card">
+        <h2>Project: Replay Admin Portal (Web App)</h2>
+        <p class="muted small">
+          Goal: A clean, modern admin portal to manage conference replays, usage reporting, and user access.
         </p>
         <div class="proj">
           <div class="shot">
-            <!-- Replace this placeholder with an actual image later -->
-            <span>Drop screenshot here</span>
+            <!-- Replace src with your exact filename from /images -->
+            <!-- Example: images/replay-dev-site-1.png -->
+            <img src="images/REPLACE_WITH_YOUR_REPLAY_IMAGE.png" alt="Replay Admin Portal screenshot">
           </div>
           <div>
             <ul>
-              <li>Modern layout + navigation</li>
-              <li>Service sections + FAQs</li>
-              <li>Contact/quote call-to-action</li>
-              <li>Mobile polish + performance cleanup</li>
+              <li>Hand-coded UI + clean page structure</li>
+              <li>Role-based navigation (admin vs. user)</li>
+              <li>Focused on clarity, speed, and usability</li>
             </ul>
           </div>
         </div>
       </section>
 
+      <!-- PROJECT 2 -->
+      <section class="card">
+        <h2>Project: Syntra Digital (Brand Website)</h2>
+        <p class="muted small">
+          Goal: A brand-forward site that clearly presents services and builds trust with a clean design.
+        </p>
+        <div class="proj">
+          <div class="shot">
+            <img src="images/REPLACE_WITH_YOUR_SYNTRA_IMAGE.png" alt="Syntra Digital website screenshot">
+          </div>
+          <div>
+            <ul>
+              <li>Hand-coded layout + modern typography</li>
+              <li>Services structure + strong call-to-action</li>
+              <li>Mobile-first and crisp visual hierarchy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECT 3 -->
+      <section class="card">
+        <h2>Project: Saxon Performance Automotive (Business Website)</h2>
+        <p class="muted small">
+          Goal: A clean business website with clear services, trust signals, and an easy contact flow.
+        </p>
+        <div class="proj">
+          <div class="shot">
+            <img src="images/REPLACE_WITH_YOUR_SAXON_IMAGE.png" alt="Saxon Performance Automotive website screenshot">
+          </div>
+          <div>
+            <ul>
+              <li>Service sections + simple navigation</li>
+              <li>Clear CTA placement (call/text/contact)</li>
+              <li>Designed to feel professional and trustworthy</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional gallery (looks polished on a portfolio) -->
+      <section class="card">
+        <h2>More work (screenshots)</h2>
+        <p class="muted small">
+          A few additional screens across projects. (You can remove this section if you want the page shorter.)
+        </p>
+        <div class="divider"></div>
+
+        <div class="gallery">
+          <div class="thumb"><img src="images/REPLACE_GALLERY_1.png" alt="Gallery screenshot 1"></div>
+          <div class="thumb"><img src="images/REPLACE_GALLERY_2.png" alt="Gallery screenshot 2"></div>
+          <div class="thumb"><img src="images/REPLACE_GALLERY_3.png" alt="Gallery screenshot 3"></div>
+          <div class="thumb"><img src="images/REPLACE_GALLERY_4.png" alt="Gallery screenshot 4"></div>
+        </div>
+      </section>
+
+      <!-- Contact -->
       <section class="card" id="contact">
         <h2>Contact</h2>
-        <p class="muted small">Reach out on Fiverr or email me:</p>
+        <p class="muted small">Reach out on Fiverr or email:</p>
         <ul>
           <li>Fiverr: <strong>@leesamoore419</strong></li>
           <li>Email: <strong>hello@syntrasolutions.digital</strong></li>
@@ -275,6 +417,8 @@
 
     <footer>© <span id="y"></span> Leesa Moore</footer>
   </div>
+
+  <a class="toplink" href="#top">↑ Top</a>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
