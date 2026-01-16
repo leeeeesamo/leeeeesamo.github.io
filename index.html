@@ -271,6 +271,7 @@
       overflow:auto;
       overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
+      cursor: ns-resize;
       scrollbar-color: rgba(255,255,255,.28) rgba(255,255,255,.06);
       scrollbar-width: thin;
     }
@@ -583,53 +584,6 @@
   <script>
     // Year
     document.getElementById("y").textContent = new Date().getFullYear();
-
-    // Scroll handoff: when a project is centered on screen, route wheel scroll into its preview
-    const projects = Array.from(document.querySelectorAll(".js-project"));
-
-    function getActiveProject() {
-      // pick the project closest to the middle of the viewport
-      const mid = window.innerHeight / 2;
-      let best = null;
-      let bestDist = Infinity;
-
-      for (const p of projects) {
-        const r = p.getBoundingClientRect();
-        const center = (r.top + r.bottom) / 2;
-        const dist = Math.abs(center - mid);
-        if (dist < bestDist) { bestDist = dist; best = p; }
-      }
-
-      // Only activate if the project actually overlaps the viewport enough
-      if (!best) return null;
-      const br = best.getBoundingClientRect();
-      const overlap = Math.min(br.bottom, window.innerHeight) - Math.max(br.top, 0);
-      if (overlap < Math.min(380, window.innerHeight * 0.45)) return null;
-
-      return best;
-    }
-
-    window.addEventListener("wheel", (e) => {
-      const active = getActiveProject();
-      if (!active) return;
-
-      const viewport = active.querySelector(".js-preview");
-      if (!viewport) return;
-
-      const atTop = viewport.scrollTop <= 0;
-      const atBottom = viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 1;
-
-      // If the preview can scroll in the direction of the wheel, consume the scroll
-      const scrollingDown = e.deltaY > 0;
-      const canScrollDown = !atBottom;
-      const canScrollUp = !atTop;
-
-      if ((scrollingDown && canScrollDown) || (!scrollingDown && canScrollUp)) {
-        e.preventDefault();
-        viewport.scrollTop += e.deltaY;
-      }
-      // else: allow the page to scroll to the next section naturally
-    }, { passive: false });
   </script>
 </body>
 </html>
