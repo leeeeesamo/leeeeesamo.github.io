@@ -3,8 +3,13 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Leesa Moore | Reliable by Design</title>
+  <title>Reliable by Design | Leesa Moore</title>
   <meta name="description" content="Reliable by Design — hand-coded websites with clean structure, strong UX, and fast performance." />
+
+  <!-- Favicons -->
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="images/favicon.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
   <style>
     :root{
@@ -45,11 +50,11 @@
     a{ color:inherit; }
     .wrap{ max-width: var(--max); margin:auto; padding: 34px 20px 90px; }
 
-    /* NAV */
+    /* Top brand strip */
     .nav{
       display:flex;
       align-items:center;
-      justify-content:space-between;
+      justify-content:flex-start;
       gap:14px;
       padding: 12px 0 28px;
     }
@@ -65,79 +70,78 @@
     }
     .brand b{ letter-spacing:.2px; }
     .brand .sub{ display:block; margin-top:2px; color:var(--muted); font-size:12.5px; }
-    .navlinks{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; }
-    .chip{
-      text-decoration:none;
-      padding:8px 12px;
-      border-radius: 999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.025);
-      color: var(--muted);
-      font-weight: 700;
-      font-size: 13px;
-      transition: transform .12s ease, border-color .12s ease;
-    }
-    .chip:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
 
     /* HERO */
     .hero{
-      display:grid;
-      grid-template-columns: 1fr;
-      gap: 18px;
-      padding-bottom: 26px;
+      display:block;
+      padding-bottom: 18px;
     }
-    @media(min-width: 980px){
-      .hero{ grid-template-columns: 1.15fr .85fr; align-items:start; }
+
+    .hero-top{
+      display:flex;
+      align-items: baseline;
+      justify-content: space-between; /* title left, links right */
+      gap: 24px;
+      flex-wrap: nowrap;
+      margin-bottom: 14px;
     }
-    .badge{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:7px 12px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
-      color: var(--muted);
-      font-size: 13px;
-      width: fit-content;
-    }
-    .badge .dot{
-      width:7px; height:7px; border-radius:999px;
-      background: linear-gradient(135deg, var(--accent), var(--hot));
-    }
-    .tagline{
-      display:inline-block;
-      background: linear-gradient(135deg, rgba(111,140,255,.18), rgba(124,92,255,.18));
-      border:1px solid rgba(255,255,255,.10);
-      padding: 7px 12px;
-      border-radius: 999px;
-      font-weight: 900;
-      letter-spacing: .2px;
-      margin: 8px 0 12px;
-    }
+
     h1{
-      margin: 10px 0 10px;
+      margin: 0;
       font-size: 46px;
       letter-spacing: -1.1px;
       line-height: 1.06;
+      white-space: nowrap;
     }
-    .lead{
+
+    .hero-nav-group{
+      display:flex;
+      align-items:center;
+      gap: 18px;
+      flex-wrap: nowrap;
+      min-width: 0;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+
+    /* text links */
+    .hero-nav{
+      display:flex;
+      gap: 16px;
+      align-items:center;
+      flex-wrap: nowrap;
       margin: 0;
-      color: var(--muted);
-      line-height: 1.75;
-      font-size: 16.5px;
-      max-width: 68ch;
+      padding: 0;
     }
-    .hero-cta{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 16px; }
+    .hero-nav a{
+      color: var(--muted);
+      text-decoration:none;
+      font-weight: 750;
+      font-size: 14px;
+      letter-spacing: .2px;
+      white-space: nowrap;
+      padding: 6px 0;
+      border-bottom: 1px solid transparent;
+      transition: color .15s ease, border-color .15s ease, transform .15s ease;
+    }
+    .hero-nav a:hover{
+      color: var(--text);
+      border-bottom-color: rgba(255,255,255,.22);
+      transform: translateY(-1px);
+    }
+
     .btn{
       text-decoration:none;
       padding: 11px 16px;
-      border-radius: 999px;
-      border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.03);
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.02);
+      box-shadow: 0 8px 20px rgba(0,0,0,.2);
       font-weight: 900;
       font-size: 14px;
       transition: transform .12s ease, border-color .12s ease;
+      white-space: nowrap;
+      cursor: pointer;
     }
     .btn:hover{ transform: translateY(-1px); border-color: rgba(255,255,255,.18); }
     .btn.primary{
@@ -146,31 +150,67 @@
       color:#081022;
     }
 
-    .hero-card{
-      border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-radius: var(--radius);
-      padding: 16px;
-      box-shadow: var(--shadow);
-    }
-
-    /* Process (updated) */
-    .steps{ display:flex; gap:10px; flex-wrap:wrap; margin-top: 12px; }
-    .step{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.02);
+    .lead{
+      margin: 0;
       color: var(--muted);
-      border-radius: 999px;
-      padding: 8px 12px;
-      font-size: 13px;
-      font-weight: 900;
+      line-height: 1.75;
+      font-size: 16.5px;
+      max-width: 74ch;
     }
 
-    /* Sections */
-    .section{ margin-top: 44px; }
-    .section h2{ margin:0; font-size: 18px; letter-spacing: -.2px; }
-    .section p{ margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
-    .divider{ height:1px; background: rgba(255,255,255,.10); margin: 18px 0 0; }
+    /* Responsive hero */
+    @media (max-width: 979px){
+      .hero-top{
+        flex-wrap: wrap;
+        gap: 12px 18px;
+      }
+      h1{
+        white-space: normal;
+      }
+      .hero-nav-group{
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        justify-content: flex-start;
+        margin-left: 0;
+      }
+      .hero-nav{
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+    }
+
+    /* SECTIONS */
+    .section{ margin-top: 78px; }
+
+    .section h2{
+      margin:0 0 12px;
+      font-size: 38px;
+      font-weight: 900;
+      letter-spacing: -0.9px;
+      line-height: 1.15;
+      color: var(--text);
+      text-align: left;
+    }
+
+    .section > p{
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.65;
+      text-align: left;
+      max-width: 80ch;
+    }
+
+    .divider{
+      height:1px;
+      background: rgba(255,255,255,.10);
+      margin: 18px 0 0;
+    }
+
+    @media (max-width: 979px){
+      .section{ margin-top: 62px; }
+      .section h2{ font-size: 30px; }
+    }
 
     /* Projects */
     .projects{ display:flex; flex-direction:column; gap:18px; margin-top: 18px; }
@@ -206,7 +246,7 @@
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
       color: var(--muted);
-      border-radius: 999px;
+      border-radius: 10px;
       padding: 6px 10px;
       font-size: 12.5px;
       font-weight: 900;
@@ -221,7 +261,7 @@
       align-items:center;
       gap:8px;
       padding: 9px 12px;
-      border-radius: 999px;
+      border-radius: 10px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.02);
       color: var(--text);
@@ -286,34 +326,75 @@
       color: var(--muted);
       line-height: 1.55;
       font-size: 14px;
+      text-align: left;
     }
     .bullets li{ margin: 7px 0; }
 
-    /* Gallery */
-    .gallery{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-    }
-    @media(min-width: 980px){
-      .gallery{ grid-template-columns: repeat(5, 1fr); }
-    }
-    .thumb{
+    /* PROCESS */
+    .process-band{
+      width:100%;
+      padding: 22px 16px;
       border:1px solid rgba(255,255,255,.12);
-      border-radius: 16px;
-      overflow:hidden;
-      background:#080f1f;
+      background: rgba(255,255,255,.02);
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(0,0,0,.22);
+      margin-top: 18px;
     }
-    .mini{
-      height: 240px;
-      overflow:auto;
-      overscroll-behavior: contain;
-      -webkit-overflow-scrolling: touch;
-    }
-    .mini img{ width:100%; display:block; }
 
-    /* Contact */
+    .process-flow{
+      display:flex;
+      gap: 18px;
+      align-items:center;
+      justify-content: space-between;
+      flex-wrap: nowrap;
+    }
+
+    .process-step{
+      position: relative;
+      flex: 1 1 0;
+      min-width: 0;
+      text-align:center;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      white-space: nowrap;
+    }
+
+    /* arrows (desktop) */
+    @media (min-width: 768px){
+      .process-step:not(:last-child)::after{
+        content: "→";
+        position:absolute;
+        right: -18px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: rgba(255,255,255,.45);
+        font-weight: 900;
+        font-size: 22px;
+        line-height: 1;
+      }
+    }
+
+    /* mobile: allow horizontal scroll + no arrows */
+    @media (max-width: 767px){
+      .process-flow{
+        overflow-x:auto;
+        padding-bottom: 8px;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,.28) rgba(255,255,255,.06);
+      }
+      .process-step{
+        flex: 0 0 auto;
+        min-width: 140px;
+      }
+      .process-step::after{ content:none !important; }
+    }
+
+    /* CONTACT (panel + form) */
     .contact{
       border:1px solid rgba(255,255,255,.12);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -322,7 +403,72 @@
       box-shadow: var(--shadow);
       margin-top: 18px;
     }
-    .contact ul{ margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+
+    .contact form { margin-top: 2px; }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 700px){
+      .form-grid{ grid-template-columns: 1fr; }
+    }
+
+    .field{
+      display:flex;
+      flex-direction:column;
+      gap: 8px;
+      color: var(--muted);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    .field span em{
+      font-style: normal;
+      color: rgba(255,255,255,.55);
+      margin-left: 4px;
+    }
+
+    .field input,
+    .field textarea{
+      width:100%;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.02);
+      color: var(--text);
+      padding: 11px 12px;
+      outline: none;
+      box-shadow: 0 8px 20px rgba(0,0,0,.18);
+      font: inherit;
+    }
+    .field textarea{ resize: vertical; min-height: 140px; }
+
+    .field input:focus,
+    .field textarea:focus{
+      border-color: rgba(138,166,255,.55);
+      box-shadow: 0 10px 26px rgba(111,140,255,.16);
+    }
+
+    .form-actions{
+      display:flex;
+      align-items:center;
+      gap: 14px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .form-note{
+      margin:0;
+      color: rgba(255,255,255,.45);
+      font-size: 13px;
+    }
+
+    .form-status{
+      margin-top: 12px;
+      color: rgba(255,255,255,.75);
+      font-weight: 800;
+      font-size: 13px;
+      display:none;
+    }
 
     footer{
       margin-top: 54px;
@@ -336,7 +482,7 @@
       right: 16px;
       bottom: 16px;
       padding: 10px 12px;
-      border-radius: 999px;
+      border-radius: 10px;
       border:1px solid rgba(255,255,255,.12);
       background: rgba(8, 15, 31, .75);
       backdrop-filter: blur(10px);
@@ -360,63 +506,34 @@
           <span class="sub">Reliable by Design</span>
         </div>
       </div>
-
-      <div class="navlinks">
-        <a class="chip" href="#work">Work</a>
-        <a class="chip" href="#process">Process</a>
-        <a class="chip" href="#contact">Contact</a>
-      </div>
     </div>
 
-    <div class="hero" id="process">
-      <div>
-        <div class="badge"><span class="dot"></span> Reliable by Design • Web Design & Development</div>
-        <div class="tagline">Reliable by Design</div>
-        <h1>Websites that feel premium and work hard.</h1>
-        <p class="lead">
-          I design and hand-code crisp informational websites (and web app interfaces) that help businesses
-          look credible, communicate clearly, and convert visitors into customers.
-        </p>
+    <div class="hero">
+      <div class="hero-top">
+        <h1>Reliable by Design</h1>
 
-        <div class="hero-cta">
+        <div class="hero-nav-group" aria-label="Primary navigation">
+          <nav class="hero-nav">
+            <a href="#projects">Projects</a>
+            <a href="#process">Process</a>
+            <a href="#contact">Contact</a>
+          </nav>
           <a class="btn primary" href="#contact">Request a Consultation</a>
-          <a class="btn" href="#work">See Projects</a>
-        </div>
-
-        <div class="section" style="margin-top:26px;">
-          <h2>Process</h2>
-          <p>Simple and reliable from start to finish.</p>
-          <div class="steps">
-            <span class="step">Plan</span>
-            <span class="step">Design</span>
-            <span class="step">Build</span>
-            <span class="step">Launch</span>
-          </div>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h2 style="margin:0; font-size:16px;">What you can expect</h2>
-        <div class="steps" style="margin-top:12px;">
-          <span class="step">Clean structure</span>
-          <span class="step">Fast performance</span>
-          <span class="step">Mobile-first</span>
-          <span class="step">CTA clarity</span>
-        </div>
-        <div class="divider"></div>
-        <p class="lead" style="font-size:14.5px;">
-          I focus on typography, spacing, and user flow so your site looks credible and guides visitors to take action.
-        </p>
-      </div>
+      <p class="lead">
+        Web design & development focused on clarity, performance, and premium presentation for businesses
+        that need to look credible and convert visitors into customers.
+      </p>
     </div>
 
-    <div class="section" id="work">
-      <h2>Featured work</h2>
+    <div class="section" id="projects">
+      <h2>Featured projects</h2>
       <p>Scroll normally down the page. When you reach a project, your scrolling will move inside that project preview.</p>
       <div class="divider"></div>
 
       <div class="projects">
-
         <!-- Replay -->
         <article class="project js-project">
           <div class="project-head">
@@ -427,7 +544,6 @@
                 <span class="tag">Admin UI</span><span class="tag">Clarity-first</span><span class="tag">Hand-coded</span>
               </div>
               <div class="project-links">
-                <!-- Opens a reader-friendly viewer page (below) -->
                 <a class="link" href="viewer.html?img=images/replay-dev-1.png&title=Replay%20Admin%20Portal" target="_blank" rel="noreferrer">
                   View full page <span>↗</span>
                 </a>
@@ -561,18 +677,54 @@
             </div>
           </div>
         </article>
+      </div>
+    </div>
 
+    <div class="section" id="process">
+      <h2>My Process</h2>
+      <p>I follow a structured approach to ensure every project's success:</p>
+      <div class="process-band">
+        <div class="process-flow">
+          <span class="process-step">Plan</span>
+          <span class="process-step">Design</span>
+          <span class="process-step">Build</span>
+          <span class="process-step">Launch</span>
+        </div>
       </div>
     </div>
 
     <div class="section" id="contact">
       <h2>Contact</h2>
       <p>Want to chat about a website build or redesign? Reach out below.</p>
+
       <div class="contact">
-        <ul>
-          <li>Fiverr: <b>@leesamoore419</b></li>
-          <li>Email: <b>hello@syntrasolutions.digital</b></li>
-        </ul>
+        <form id="contactForm" action="https://formspree.io/f/xzdddbbp" method="POST">
+          <div class="form-grid">
+            <label class="field">
+              <span>Name</span>
+              <input type="text" name="name" autocomplete="name" placeholder="Your name" />
+            </label>
+
+            <label class="field">
+              <span>Email <em>*</em></span>
+              <input type="email" name="email" autocomplete="email" placeholder="you@company.com" required />
+            </label>
+          </div>
+
+          <label class="field" style="margin-top:12px;">
+            <span>Message <em>*</em></span>
+            <textarea name="message" rows="6" placeholder="Tell me about your project..." required></textarea>
+          </label>
+
+          <input type="hidden" name="_subject" value="New Portfolio Inquiry (Reliable by Design)" />
+
+          <div class="form-actions">
+            <button class="btn primary" type="submit">Send message</button>
+            <p class="form-note">I’ll reply within 1–2 business days.</p>
+          </div>
+
+          <p id="formStatus" class="form-status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
 
@@ -584,6 +736,36 @@
   <script>
     // Year
     document.getElementById("y").textContent = new Date().getFullYear();
+
+    // Formspree AJAX submit (prevents redirect, shows success message)
+    const form = document.getElementById("contactForm");
+    const statusEl = document.getElementById("formStatus");
+
+    if (form && statusEl) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.style.display = "block";
+        statusEl.textContent = "Sending…";
+
+        try {
+          const formData = new FormData(form);
+          const resp = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: { "Accept": "application/json" }
+          });
+
+          if (resp.ok) {
+            form.reset();
+            statusEl.textContent = "Thanks! Your message was sent. I’ll be in touch shortly.";
+          } else {
+            statusEl.textContent = "Hmm — something went wrong. Please try again or email me directly.";
+          }
+        } catch {
+          statusEl.textContent = "Network error. Please try again or email me directly.";
+        }
+      });
+    }
   </script>
 </body>
 </html>
